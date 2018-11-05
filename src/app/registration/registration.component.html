@@ -30,11 +30,20 @@
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Select Role</mat-label>
-                <mat-select placeholder="Select">
-                  <mat-option value="option">Seller</mat-option>
-                  <mat-option value="option">Buyer</mat-option>
+                <mat-select placeholder="Select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                  <mat-option value="Seller">Seller</mat-option>
+                  <mat-option value="Buyer">Buyer</mat-option>
                 </mat-select>
+             
               </mat-form-field>
+              <mat-form-field class="example-full-width"*ngIf="selectedValue == 'Seller'" appearance="outline">
+                    <mat-label>Company Name</mat-label>
+                      <input type="text" name="cName" id="Cname" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                      <mat-error *ngIf="name.invalid">
+                       <p class='error-danger'> {{getErrorMessage1()}}</p>
+                      </mat-error>
+                    </mat-form-field>
+
         </div>
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
@@ -60,7 +69,7 @@
           <input type="text" name="address2" id="address2"   matInput placeholder="Address Line 2" maxlength="100" minlength="5" >
         </mat-form-field> 
       </div>
-      
+    
         <!-- <div class="container">
           <mat-form-field class="example-full-width" appearance="outline">
            <mat-label>Enter State</mat-label>
