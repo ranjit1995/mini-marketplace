@@ -1,25 +1,31 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
 <form class="example-form">
-  <mat-card class="example-card width">
-    
+  <mat-card class="example-card width" style="text-align: center;">
+     <div > <mat-icon class="group">group</mat-icon></div>
       <label  style="text-align: center;">
      <h2><b>Login</b></h2>
     </label>
     
     
       <mat-form-field class="example-full-width" >
-        <input type="text" name="userName" id="userName"   matInput placeholder="User Name" maxlength="20" [(ngModel)]="userName" required>
+        
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="userName" id="userName"   matInput placeholder="User Name"minlength="4" maxlength="20" [(ngModel)]="userName" required>
       </mat-form-field> 
     
       <mat-form-field class="example-full-width">
-          <button mat-button type="submit"  style="float:right;margin-bottom: -4%;margin-top: -2%;">    <mat-icon class="example-icon"> visibility </mat-icon>  </button>
-        <input type="password" name="password" id="password" matInput placeholder="password" maxlength="12" name="password" [(ngModel)]="password" required>
+          <div class="icon">    <mat-icon class="example-icon" (click)="viewpass()"> visibility </mat-icon> 
+          
+          </div>
+        <input [type]="show ? 'text' : 'password'" name="password" id="password" matInput placeholder="password" minlength="4" maxlength="22" name="password" [(ngModel)]="password" required>
       </mat-form-field>
    
     <mat-card-actions>
-      <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%;" (click)="loginUser()">login</button>
+      <button mat-button type="submit" class="login" (click)="loginUser()">login</button>
     </mat-card-actions>
-  </mat-card>
+    <mat-nav-list>
+      <a [routerLink]="['/registration']" routerLinkActive="active">Register</a>
+    </mat-nav-list>
+    </mat-card>
   </form> 
   
+<router-outlet></router-outlet>

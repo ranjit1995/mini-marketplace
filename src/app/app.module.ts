@@ -2,7 +2,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { FavouriteProductsComponent } from './favourite-products/favourite-products.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
-
+import { ShowHidePasswordModule } from 'ngx-show-hide-password';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -42,10 +42,7 @@ const appRoutes: Routes = [
     {
     path: '', redirectTo:'/home', pathMatch:'full'
     },  
-    {
-    path:'home',
-    component:HomeComponent,
-    },
+    { path:'home', component: HomeComponent },
     {
     path:'auth',
     component:AuthComponent,
@@ -103,8 +100,9 @@ const appRoutes: Routes = [
     LayoutModule,
     MatSelectModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {useHash: true}),
     HttpModule,
+    ShowHidePasswordModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,

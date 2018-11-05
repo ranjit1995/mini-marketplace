@@ -1,21 +1,26 @@
 <app-header></app-header>
 <router-outlet></router-outlet>
 
-<mat-card class="example-card1 container" *ngFor="let data of dataSource">
-        <img mat-card-image src="../../assets/images/download.jpeg">
-        <mat-card-content>
-          <div style="background-color: darkseagreen;padding: 5.5%;width:100%; margin-left: -5.4%;">
-                <label style="color: brown"><pre><b>Price        {{data.price}}</b></pre></label>
-          </div>
-          <div style="padding: 5%;width:100%; margin-left: -5.5%;">
-                <div style="color:blueviolet; margin-top:-2%; margin-bottom: -2%"><label><pre>Name         {{data.name}}</pre></label></div>
-                <div style="color:blueviolet"><label><pre>Discription  4GB RAM 64GB ROM</pre></label></div>
-            </div>
-        </mat-card-content>
-        <mat-card-footer>
-            <button mat-button style="float:left; padding:1%; margin-top: -7%;"> <mat-icon class="example-icon"  (click)="openDialog()"> favorite </mat-icon></button>
-          <button mat-button style="float:right; padding:1%;margin-top: -7%;"><mat-icon class="example-icon"> visibility </mat-icon></button>
-        </mat-card-footer>
-</mat-card>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+        <mat-card class="example-card1 " *ngFor="let data of dataSource">
+            <img mat-card-image src="../../assets/images/download.jpeg">
+            <mat-card-content>
+              <div class="price">
+                    <label style="color: brown"><pre><b>Price        {{data.price}}</b></pre></label>
+              </div>
+              <div class="dname">
+                    <div class="name"><label><pre>Name         {{data.name}}</pre></label></div>
+                    <div style="color:blueviolet"><label><pre>Discription  4GB RAM 64GB ROM</pre></label></div>
+                </div>
+            </mat-card-content>
+            <mat-card-footer>
+                <button mat-button class="ficon"> <mat-icon class="example-icon"  (click)="openDialog()"> favorite </mat-icon></button>
+              <button mat-button class="vicon"><mat-icon class="example-icon" (click)="view()"> visibility </mat-icon></button>
+            </mat-card-footer>
+        </mat-card>
+    </div>
+  </div>
+</div>
 
-<app-footer></app-footer>

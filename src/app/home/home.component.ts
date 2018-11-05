@@ -4,6 +4,8 @@ import { MatIconRegistry } from '@angular/material';
 import { MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FavouriteProductsComponent } from '../favourite-products/favourite-products.component';
+import { ViewProductsComponent } from '../view-products/view-products.component';
+import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   name: string;
@@ -31,13 +33,13 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export  class HomeComponent implements OnInit {
 
-  
   displayedColumns: string[] = ['position', 'name', 'price'];
   dataSource = ELEMENT_DATA;
 
   email = new FormControl('', [Validators.required, Validators.email]);
   name = new FormControl('', [Validators.required,Validators.minLength(3)]);
   address = new FormControl('', [Validators.minLength(3), Validators.minLength(3)]);
+ 
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'You must enter a value' :
@@ -47,7 +49,7 @@ export  class HomeComponent implements OnInit {
         return this.email.hasError('required') ? 'You must enter a 3 digit' :
             this.email.hasError('name') ? 'Not a valid name' :'';
           }
-          constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public dialog: MatDialog) {
+          constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public dialog: MatDialog,private _router: Router) {
             iconRegistry.addSvgIcon(
                 'thumbs-up',
                 sanitizer.bypassSecurityTrustResourceUrl('../../assets/image/'));
@@ -63,6 +65,21 @@ export  class HomeComponent implements OnInit {
               console.log('The dialog was closed');
              
             });
+            
+          }
+          view(): void {
+           
+            // const dialogRef = this.dialog.open(ViewProductsComponent, {
+            //   width: '350px',
+            //   height:'250px',
+            // });
+        
+            // dialogRef.afterClosed().subscribe(result => {
+            //   console.log('The dialog was closed');
+             
+            // });
+            this._router.navigate(['/view-products']); 
+            
           }
   ngOnInit() {
   }

@@ -1,6 +1,4 @@
-.mat-radio-button ~ .mat-radio-button {
-    padding-right: 16px;
-  }
+
   .example-form {
 
     width: 100%;
@@ -23,43 +21,30 @@
   
   }
   
-  .example-header-image {
-      float: center;
-      margin-left: 40%;
-   
-    
-  }
   .width
   {
       text-align: center;
-    width: 40%;
+    width: 30%;
     margin-left: 30%;
     margin-right: 30%;
-    height: 50%;
+    height: 60%;
   }
  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
+
+a
+{
+    float:right; margin-top: -1%;
 }
-
-li {
-    float: left;
+.icon
+{
+    float:right;margin-bottom: -4%;margin-top: -2%;
 }
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 25px 18px;
-    text-decoration: none;
+.login
+{
+    text-align: center;width: 30%;padding:1%; background-color: aquamarine;
 }
-
-li a:hover:not(.active) {
-    background-color: green;
+.group
+{
+    width:30%;text-align: center;margin-top: 5%;
+    font-size: 100px !important;
 }
-
-
