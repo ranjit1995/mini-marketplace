@@ -2,8 +2,3 @@
 <router-outlet></router-outlet>
 
 
-<select [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
-  <option value="true">Yes</option>
-  <option value="false">No</option>
-</select>
-<input *ngIf="selectedValue == 'false'" type="date" >

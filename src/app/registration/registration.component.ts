@@ -1,15 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
+  
   selector: 'app-registration',
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
   mobile: any;
-  
+  userName: any;
+  emailId: any;
+  selectedValue: any;
+  cname: any;
+  cName: any;
+  mobileno: any;
+  address: any;
+  secondAddress: any;
+  firstAddress: any;
+  cities: any;
+  State: any;
+  Password: any;
+  Pincode: any;
+  show: boolean;
+
+  constructor(private _router: Router) { 
+// initialize variable value
+    this.show = false;
+  }
+
   ngOnInit() {
+  }
+  viewpass()
+  {
+    this.show = !this.show;
   }
 
   states: string[] = [
@@ -71,21 +96,20 @@ export class RegistrationComponent implements OnInit {
 
   addUser() {
     let body = {
-      "first_name":this.name,
-      "role":this.role,
-      "email":this.email,
-   "mobile":this.mobile,
-   "password":this.password,
-  "address":this.address1,
-  "city":this.city,
-  "state":this.state,
-  "pincode":this.pincode,
+      "first_name":this.userName,
+      "role":this.selectedValue,
+      "email":this.emailId,
+      "cname":this.cName,
+   "mobile":this.mobileno,
+   "password":this.Password,
+  "address1":this.address,
+  "address2":this.secondAddress,
+  "city":this.cities,
+  "state":this.State,
+  "pincode":this.Pincode,
   
     }
     console.log("Raw data",body);
   }
-  constructor() { }
-
   
-
 }

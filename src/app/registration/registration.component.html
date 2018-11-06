@@ -12,7 +12,7 @@
       <div >
           <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter User Name</mat-label>
-              <input type="text" matInput placeholder="Enter your name" [formControl]="name" minlength="3" required>
+              <input type="text" matInput placeholder="Enter your name" id="userName" [(ngModel)]="userName" [formControl]="name" minlength="3" required>
               <mat-error *ngIf="name.invalid">
             <p class='error-danger'> {{getErrorMessage1()}}</p>
            </mat-error>
@@ -21,7 +21,7 @@
         <div>
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Email Id</mat-label>
-                  <input type="text" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"   matInput placeholder="Email" maxlength="50" minlength="3" [formControl]="email" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                  <input type="text" name="email" id="emailId"[(ngModel)]="emailId"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"   matInput placeholder="Email" maxlength="50" minlength="3" [formControl]="email" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                   <mat-error *ngIf="email.invalid">
                    <p class='error-danger'> {{getErrorMessage()}}</p>
                   </mat-error>
@@ -30,7 +30,7 @@
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Select Role</mat-label>
-                <mat-select placeholder="Select" [(ngModel)]="selectedValue" [ngModelOptions]="{standalone: true}">
+                <mat-select placeholder="Select" [(ngModel)]="selectedValue" id="selectedValue" [ngModelOptions]="{standalone: true}">
                   <mat-option value="Seller">Seller</mat-option>
                   <mat-option value="Buyer">Buyer</mat-option>
                 </mat-select>
@@ -38,7 +38,7 @@
               </mat-form-field>
               <mat-form-field class="example-full-width"*ngIf="selectedValue == 'Seller'" appearance="outline">
                     <mat-label>Company Name</mat-label>
-                      <input type="text" name="cName" id="Cname" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                      <input type="text" name="cName" id="cName" [(ngModel)]="cName" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                       <mat-error *ngIf="name.invalid">
                        <p class='error-danger'> {{getErrorMessage1()}}</p>
                       </mat-error>
@@ -48,7 +48,7 @@
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Mobile Number</mat-label>
-        <input type="text" name="mobile no" id="mobile_no" [formControl]="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  matInput placeholder="mobile number" maxlength="10" minlength="10" >
+        <input type="text" name="mobile no" id="mobileno" [(ngModel)]="mobileno"  [formControl]="number" onkeypress="return event.charCode >= 48 && event.charCode <= 57"  matInput placeholder="mobile number" maxlength="10" minlength="10" >
         <mat-error *ngIf="number.invalid">
             <p class='error-danger'> {{getErrorMessage4()}}</p>
            </mat-error>
@@ -57,7 +57,7 @@
        <div class="container">
           <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter Address Line 1</mat-label>
-              <input matInput placeholder="Enter Address Line 1" [formControl]="address1" minlength="3" required>
+              <input type="text" matInput placeholder="Enter Address Line 1" id="address" [(ngModel)]="address" [formControl]="address1" minlength="3" required >
               <mat-error *ngIf="address1.invalid">
                   <p class='error-danger'> {{getErrorMessage1()}}</p>
                  </mat-error>
@@ -66,7 +66,7 @@
     <div class="container">
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Enter Address Line 2</mat-label>
-          <input type="text" name="address2" id="address2"   matInput placeholder="Address Line 2" maxlength="100" minlength="5" >
+          <input type="text" name="address2" id="secondAddress" [(ngModel)]="secondAddress"  matInput placeholder="Address Line 2" maxlength="100" minlength="5" >
         </mat-form-field> 
       </div>
     
@@ -85,7 +85,7 @@
     <div class="container">
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Enter City</mat-label>
-          <input type="text" name="city" id="city" [formControl]="city"   matInput placeholder="City" maxlength="50" minlength="5" required>
+          <input type="text" name="city" id="cities" [(ngModel)]="cities" [formControl]="city"   matInput placeholder="City" maxlength="50" minlength="5" required>
           <mat-error *ngIf="city.invalid">
               <p class='error-danger'> {{getErrorMessage1()}}</p>
              </mat-error>
@@ -94,7 +94,7 @@
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter State</mat-label>
-              <input type="text" name="state" id="state" [formControl]="state"  matInput placeholder="State" maxlength="20" minlength="5" required>
+              <input type="text" name="state" id="State" [(ngModel)]="State" [formControl]="state"  matInput placeholder="State" maxlength="20" minlength="5" required>
               <mat-error *ngIf="state.invalid">
                   <p class='error-danger'> {{getErrorMessage1()}}</p>
                  </mat-error>
@@ -103,7 +103,7 @@
           <div class="container">
               <mat-form-field class="example-full-width" appearance="outline">
                   <mat-label>Enter Pincode</mat-label>
-                    <input type="text" name="pincode" id="pincode" [formControl]="pincode"   matInput placeholder="pincode" maxlength="6" minlength="6" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <input type="text" name="pincode" id="Pincode" [(ngModel)]="Pincode"  [formControl]="pincode"   matInput placeholder="pincode" maxlength="6" minlength="6" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     <mat-error *ngIf="pincode.invalid">
                         <p class='error-danger'> {{getErrorMessage5()}}</p>
                        </mat-error>
@@ -111,11 +111,11 @@
             </div>
             <div class="container">
                 <mat-form-field class="example-full-width" appearance="outline">
-                    <button mat-button type="submit"  style="float:right;margin-bottom: -4%;margin-top: -2%;">    <mat-icon class="example-icon"> visibility </mat-icon>  </button>
+                    <button mat-button type="submit"  (click)="viewpass()"  style="float:right;margin-bottom: -4%;margin-top: -2%;">    <mat-icon class="example-icon"> visibility </mat-icon>  </button>
                   <mat-label>password</mat-label>
                     
-                    <input type="password" name="password" id="password" [formControl]="password" matInput placeholder="password" maxlength="32" minlength="6" required>
-                    <mat-error *ngIf="password.invalid">
+                  <input [type]="show ? 'text' : 'password'" name="password" id="Password" [(ngModel)]="Password" [formControl]="password" matInput placeholder="password" maxlength="32" minlength="6" required>
+                  <mat-error *ngIf="password.invalid">
                         <p class='error-danger'> {{getErrorMessage2()}}</p>
                        </mat-error>
                   </mat-form-field> 

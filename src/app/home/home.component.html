@@ -16,11 +16,10 @@
                 </div>
             </mat-card-content>
             <mat-card-footer>
-                <button mat-button class="ficon"> <mat-icon class="example-icon"  (click)="openDialog()"> favorite </mat-icon></button>
+                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog()"> favorite </mat-icon></button>
               <button mat-button class="vicon"><mat-icon class="example-icon" (click)="view()"> visibility </mat-icon></button>
             </mat-card-footer>
         </mat-card>
     </div>
   </div>
 </div>
-
