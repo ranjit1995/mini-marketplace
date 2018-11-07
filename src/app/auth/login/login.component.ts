@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,15 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email: any;
-  
-  password: any;
-  
+
   userName: any;
   show: boolean;
-
+password:any
   
   constructor(private _router: Router) { 
+
+
 // initialize variable value
     this.show = false;
   }
@@ -45,4 +45,14 @@ export class LoginComponent implements OnInit {
         }
       }
 
+      email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]);
+      pass = new FormControl('', [Validators.required,Validators.minLength(8)]);
+      getErrorMessage1() {
+        return this.email.hasError('required') ? 'You must enter a valid user ID' :
+            this.email.hasError('email') ? 'Not a valid user ID' :'';
+      }
+      getErrorMessage2() {
+        return this.email.hasError('required') ? 'You must enter a valid password' :
+            this.email.hasError('pass') ? 'Invalid password' :'';
+      }
 }

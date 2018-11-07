@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
   mobile: any;
-  userName: any;
-  emailId: any;
+  Email: any;
   selectedValue: any;
   cname: any;
   cName: any;
@@ -24,6 +23,7 @@ export class RegistrationComponent implements OnInit {
   Password: any;
   Pincode: any;
   show: boolean;
+  userName: any;
 
   constructor(private _router: Router) { 
 // initialize variable value
@@ -55,7 +55,7 @@ export class RegistrationComponent implements OnInit {
   city = new FormControl('', [Validators.required,Validators.minLength(3)]);
   state = new FormControl('', [Validators.required,Validators.minLength(3)]);
   pincode = new FormControl('', [Validators.required,Validators.minLength(6)]);
-  password = new FormControl('', [Validators.required,Validators.minLength(3)]);
+  password = new FormControl('', [Validators.required,Validators.minLength(8)]);
   role: any;
   
   getErrorMessage() {
@@ -67,7 +67,7 @@ export class RegistrationComponent implements OnInit {
         this.email.hasError('name') ? 'Not a valid name' :'';
       }
       getErrorMessage2() {
-        return this.email.hasError('required') ? 'Password most be at list 6 character' :
+        return this.email.hasError('required') ? 'Password most be at list 8 character' :
             this.email.hasError('name') ? 'Not a valid password' :'';
           }
           getErrorMessage4() {
@@ -98,7 +98,7 @@ export class RegistrationComponent implements OnInit {
     let body = {
       "first_name":this.userName,
       "role":this.selectedValue,
-      "email":this.emailId,
+      "email":this.Email,
       "cname":this.cName,
    "mobile":this.mobileno,
    "password":this.Password,

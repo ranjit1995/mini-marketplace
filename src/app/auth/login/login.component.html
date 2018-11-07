@@ -1,30 +1,43 @@
 <app-header></app-header>
-<form class="example-form">
+<div class="container-fluid">
+  <div class="col-sm-12">
+
+ 
+  <form class="example-form">
   <mat-card class="example-card width" style="text-align: center;">
      <div > <mat-icon class="group">account_circle</mat-icon></div>
-      <label  style="text-align: center;">
-     <h2><b>Login</b></h2>
+      <label>
+     <h2 style="text-align: center; font-size: 24px"><b>Login</b></h2>
     </label>
     
     
-      <mat-form-field class="example-full-width" >
-        
-        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="userName" id="userName"   matInput placeholder="User Name"minlength="4" maxlength="20" [(ngModel)]="userName" required>
+      <mat-form-field class="example-full-width"appearance="outline" >
+          <mat-label>User Id</mat-label>
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="userName" id="userName" [(ngModel)]="userName" [formControl]="email"  matInput placeholder="User Name" maxlength="50"  required>
+        <mat-error *ngIf="email.invalid">
+            <p class='error-danger'> {{getErrorMessage1()}}</p>
+           </mat-error>
       </mat-form-field> 
     
-      <mat-form-field class="example-full-width">
-        <button mat-button type="submit" (click)="viewpass()" style="float:right;margin-bottom: -4%;margin-top: -2%;">    <mat-icon class="example-icon" > visibility </mat-icon>  </button>
-                 
-        <input [type]="show ? 'text' : 'password'" name="password" id="password" matInput placeholder="password" minlength="4" maxlength="22" name="password" [(ngModel)]="password" required>
+      <mat-form-field class="example-full-width" appearance="outline">
+          <mat-label>Password</mat-label>         
+        <input [type]="show ? 'text' : 'password'" name="password" id="password"[(ngModel)]="password" [formControl]="pass" matInput placeholder="password"  maxlength="32" name="password" [(ngModel)]="password" required>
+        <button mat-button type="submit" (click)="viewpass()" style="float:right;margin-top: -8%">    <mat-icon class="example-icon" > visibility </mat-icon>  </button>
+        <mat-error *ngIf="pass.invalid">
+            <p class='error-danger'> {{getErrorMessage2()}}</p>
+           </mat-error>
       </mat-form-field>
    
     <mat-card-actions>
-      <button mat-button type="submit" class="login" (click)="loginUser()">login</button>
+      <button mat-button type="submit" [disabled]="!(email.valid && pass.valid)" class="login" (click)="loginUser()">login</button>
     </mat-card-actions>
     <mat-nav-list>
       <a [routerLink]="['/registration']" routerLinkActive="active">Register</a>
     </mat-nav-list>
     </mat-card>
   </form> 
-  
+</div>
+</div>
+
+    
 <router-outlet></router-outlet>
