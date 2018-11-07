@@ -1,0 +1,25 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-3">
+      <a [routerLink]="['/home']" href=""  routerLinkActive="active">Products</a>   
+    </div>
+    <div class="col-sm-6">
+      
+        <div class="container"> 
+            <div >
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <form id="search">
+                    <input type="search" matInput placeholder="Search" id="search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                    <i class="material-icons" (click)="searching()" style="font-size: 25px !important;float:right;color:brown;">search</i>
+                  </form>      
+            </mat-form-field>
+            </div>
+          </div>
+       
+    </div>
+    <div class="col-sm-3">
+        <button mat-button style="float: right;background-color:white;padding:2% 6%" [routerLink]="['/add-product']" href=""  routerLinkActive="active" >+Add Product</button>
+    </div>
+  </div>
+</div>

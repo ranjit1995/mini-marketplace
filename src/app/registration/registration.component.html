@@ -9,6 +9,7 @@
     </label>
     
     <div class="row" style="margin-bottom: -7%;">
+        <div class="container"> 
       <div >
           <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter User Name</mat-label>
@@ -17,7 +18,9 @@
             <p class='error-danger'> {{getErrorMessage1()}}</p>
            </mat-error>
       </mat-form-field>
-      </div> 
+      </div>
+    </div>
+    <div class="container"> 
         <div>
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Email Id</mat-label>
@@ -27,6 +30,7 @@
                   </mat-error>
                 </mat-form-field>
         </div>
+      </div>
         <div class="container">
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Select Role</mat-label>
@@ -34,8 +38,10 @@
                   <mat-option value="Seller">Seller</mat-option>
                   <mat-option value="Buyer">Buyer</mat-option>
                 </mat-select>
-             
+              
               </mat-form-field>
+            </div>
+            <div class="container">
               <mat-form-field class="example-full-width"*ngIf="selectedValue == 'Seller'" appearance="outline">
                     <mat-label>Company Name</mat-label>
                       <input type="text" name="cName" id="cName" [(ngModel)]="cName" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>

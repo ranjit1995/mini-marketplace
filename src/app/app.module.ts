@@ -36,6 +36,9 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationComponent } from './registration/registration.component';
 import { DeleteProductComponent } from './delete-product/delete-product.component';
+import { SearchBoxComponent } from './search-box/search-box.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 //import { AppRoutingModule } from './app.routing';
   
 const appRoutes: Routes = [
@@ -64,6 +67,10 @@ const appRoutes: Routes = [
         component:EditProductComponent,  
     },
     {
+        path:"auth/login",
+        component:LoginComponent,  
+    },
+    {
         path:"favourite-products",
         component:FavouriteProductsComponent,  
     },
@@ -75,7 +82,10 @@ const appRoutes: Routes = [
         path:"header",
         component:HeaderComponent,  
     },
-   
+    {
+        path:"seach-box",
+        component:SearchBoxComponent,  
+    },
    
 ];
 
@@ -94,6 +104,12 @@ const appRoutes: Routes = [
     RegistrationComponent,
     
     DeleteProductComponent,
+    
+    SearchBoxComponent,
+    
+    LoginComponent,
+    
+    SnackbarComponent,
    
   ],
   imports: [

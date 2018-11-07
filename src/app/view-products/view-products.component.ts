@@ -3,6 +3,7 @@ import { FavouriteProductsComponent } from '../favourite-products/favourite-prod
 import { MatIconRegistry, MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-view-products',
@@ -12,7 +13,11 @@ import { Router } from '@angular/router';
 export class ViewProductsComponent implements OnInit {
 
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public dialog: MatDialog,private _router: Router) { }
+  constructor(iconRegistry: MatIconRegistry, 
+              sanitizer: DomSanitizer,
+              public dialog: MatDialog,
+              private _router: Router, 
+              private _location: Location) { }
 
   ngOnInit() {
   }
@@ -27,5 +32,9 @@ export class ViewProductsComponent implements OnInit {
      
     });
     
+  }
+  back()
+  {
+    this._location.back();
   }
 }

@@ -1,9 +1,6 @@
 <app-header></app-header>
+<app-search-box></app-search-box>
 <router-outlet></router-outlet>
-
-<div class="container">
-  <div class="row">
-    <div class="col-sm-12">
         <mat-card class="example-card1 " *ngFor="let data of dataSource">
             <img mat-card-image src="../../assets/images/download.jpeg">
             <mat-card-content>
@@ -17,9 +14,7 @@
             </mat-card-content>
             <mat-card-footer>
                 <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog()"> favorite </mat-icon></button>
-              <button mat-button class="vicon"><mat-icon class="example-icon" (click)="view()"> visibility </mat-icon></button>
+              <button mat-button class="vicon"><mat-icon class="example-icon" (click)="viewDialog()"> visibility </mat-icon></button>
             </mat-card-footer>
         </mat-card>
-    </div>
-  </div>
-</div>
+   

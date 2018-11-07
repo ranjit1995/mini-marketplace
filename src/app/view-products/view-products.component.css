@@ -1,34 +1,30 @@
 .example-card1 {
     
-    margin-left:1.1%;
-    margin-top: 2%;
-  
-    float:left;
+  max-width:100%;
+  max-height: 100%;
+    float:center;
+    margin-top: 3%;
+    
   }
   
   .filled
 {
-  max-width: 400px;
-  padding-left: 32px;
+  max-width: 500px;
   color: #4a83c0;
   background-color: #fff;
   cursor: auto;
 
 }
-
-.example-card2 {
-   width: 99%;
-    margin-left: .5%;
-    margin-top: 2%;
-    margin-right: .5%;
-    background-color:gray;
-    border: solid 2px black;
-    float:left;
+  img
+  {
+    max-height: 100%;
+    max-width: 100%;
   }
   
 .price
 {
-  background-color: darkseagreen;padding: 5.5%;width:100%; margin-left: -5.4%;
+  background-color: darkseagreen;padding:5.5%;width:112%; margin-left: -5.5%;
+  text-align: left;
 }
 .name
 {
@@ -40,9 +36,33 @@
 }
 .ficon
 {
-  float:left; padding:1%; margin-top: -7%;
+  float:left; padding:1%;
 }
-.vicon
+.row
 {
-  float:right; padding:1%; margin-top: -7%;
+  text-align: left;
+ margin-top: 3%;
+  background: #fff;
+
+}
+.fulllCard
+{
+  background-color:black;
+}
+.well
+{
+  background: white;
+  float: left;
+
+}
+.text-center
+{
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.group
+{
+    text-align: center;
+    font-size: 45px !important;
+    margin-top: 1%;
 }

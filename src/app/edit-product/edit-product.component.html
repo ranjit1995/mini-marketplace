@@ -1,3 +1,61 @@
-<p>
-  edit-product works!
-</p>
+<app-header></app-header>
+<router-outlet></router-outlet>
+
+ <form class="example-form">
+   <mat-card class="example-card width">
+      <div class="row">   
+    <div class="container">
+
+      <label class="example-full-width"  style="text-align: center;">
+     <h2 style="float:left; background-color: lightgray; padding: 3% 13%;font-size:24px;" (click)="addProduct()"><b>Add Product</b></h2>
+     <h2 style="float:right ; background-color: gray; padding: 3% 13%;font-size:24px;" (click)="editProduct()"><b>Edit Product</b></h2>
+    </label>
+  </div>
+</div>
+    <div class="row" style="margin-bottom: -7%;" >
+        <div class="container"> 
+              <mat-form-field class="example-full-width" appearance="outline">
+                  <mat-label>Product Name</mat-label>
+                  <input type="text" matInput placeholder="Product name" id="pName" [formControl]="name" [(ngModel)]="pName"  minlength="2" maxlength="30" required >   
+                    <mat-error *ngIf="name.invalid">
+                        <p class='error-danger'> {{getErrorMessage1()}}</p>
+                    </mat-error>
+              
+                </mat-form-field>
+              
+        </div>
+        <div class="container"> 
+            <mat-form-field class="example-full-width" appearance="outline">
+                <mat-label>Product Description</mat-label>
+                <input type="text" matInput placeholder="Product discription" id="discriptions" [formControl]="discription" [(ngModel)]="discriptions"  minlength="5" maxlength="100" required>   
+                  <mat-error *ngIf="discription.invalid">
+                      <p class='error-danger'> {{getErrorMessage4()}}</p>
+                  </mat-error>
+            </mat-form-field>
+      </div>
+      <div class="container"> 
+          <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Product Quentity</mat-label>
+              <input type="text" matInput placeholder="Product Quentity" id="quentities" [formControl]="quentity" [(ngModel)]="quentities" onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="1" maxlength="10" required>   
+                <mat-error *ngIf="quentity.invalid">
+                    <p class='error-danger'> {{getErrorMessage2()}}</p>
+                </mat-error>
+          </mat-form-field>
+    </div>
+    <div class="container"> 
+        <mat-form-field class="example-full-width" appearance="outline">
+            <mat-label>Product price</mat-label>
+            <input type="text" matInput placeholder="Product price" id="Price" ng-pattern="/^\d{1,10}$/" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [formControl]="price" [(ngModel)]="Price" min="1"   minlength="1"maxlength="10" required>   
+            <mat-error *ngIf="price.invalid">
+                <p class='error-danger'> {{getErrorMessage3()}}</p>
+            </mat-error>
+        </mat-form-field>
+  </div>
+</div>
+    <mat-card-actions>
+      <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%;" (click)="cancel()">cancel</button>
+        <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%; float:right;" (click)="addUser()">Save</button>
+      </mat-card-actions>
+  </mat-card>
+  </form> 
+  

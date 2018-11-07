@@ -65,13 +65,9 @@ export  class HomeComponent implements OnInit {
               console.log('The dialog was closed');
              
             });
-            if (this.icon === 'favorite') {
-              this.icon = 'highlight';
-          } else {
-              this.icon = 'favorite'
-          } 
+            
           }
-          view(): void {
+          viewDialog(): void {
            
             // const dialogRef = this.dialog.open(ViewProductsComponent, {
             //   width: '350px',
@@ -87,7 +83,7 @@ export  class HomeComponent implements OnInit {
           }
   ngOnInit() {
   }
-  public icon = 'favorite'; 
+
 }
 
 
