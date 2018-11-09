@@ -45,7 +45,7 @@
     <div class="container"> 
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Product price</mat-label>
-            <input type="text" matInput placeholder="Product price" id="Price" ng-pattern="/^\d{1,10}$/" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [formControl]="price" [(ngModel)]="Price" min="1"   minlength="1"maxlength="10" required>   
+            <input type="text" matInput placeholder="Product price" id="Price" ng-pattern="^[1-9]$" onkeypress="return event.charCode >= 48 && event.charCode <= 57" [formControl]="price" [(ngModel)]="Price" min="1"   minlength="1"maxlength="10" required>   
             <mat-error *ngIf="price.invalid">
                 <p class='error-danger'> {{getErrorMessage3()}}</p>
             </mat-error>

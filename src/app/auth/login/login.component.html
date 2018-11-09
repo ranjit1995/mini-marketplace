@@ -1,8 +1,12 @@
-<app-header></app-header>
+<ul style="background-color: azure;">
+  <li><a [routerLink]="['/home']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
+  <li style="float:right ;margin-top:2%"><a [routerLink]="['../../registration']" href=""  routerLinkActive="active"   id="register"  >register</a></li> 
+  <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >login</a></li>  </ul>
+
+  <hr>
+
 <div class="container-fluid">
   <div class="col-sm-12">
-
- 
   <form class="example-form">
   <mat-card class="example-card width" style="text-align: center;">
      <div > <mat-icon class="group">account_circle</mat-icon></div>

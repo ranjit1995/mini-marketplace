@@ -7,6 +7,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./favourite-products.component.css']
 })
 export class FavouriteProductsComponent implements OnInit {
+  _location: any;
 
   constructor(
     public dialogRef: MatDialogRef<FavouriteProductsComponent>,
@@ -14,6 +15,7 @@ export class FavouriteProductsComponent implements OnInit {
 
     cancel(): void {
     this.dialogRef.close();
+    this._location.back();
   }
   registration(): void {
     this.dialogRef.close();
@@ -23,5 +25,6 @@ export class FavouriteProductsComponent implements OnInit {
   }
   ngOnInit() {
   }
+
 
 }

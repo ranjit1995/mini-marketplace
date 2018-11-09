@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormControl } from '@angular/forms';
 
@@ -9,10 +9,12 @@ import { Validators, FormControl } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 
   userName: any;
   show: boolean;
 password:any
+  emitterService: any;
   
   constructor(private _router: Router) { 
 
@@ -34,14 +36,16 @@ password:any
     }
     console.log("Raw data", body);
     
-    if(this.userName === 'ranjit' && this.password === 'ranjit') {
-           this._router.navigate(['/home']);
+    if(this.userName === 'ranjit@gmail.com' && this.password === 'ranjit123') {
+           this._router.navigate(['/main']);
          // this._router.navigate(['/', 'home']);
           console.log("hiiiii");  
+          //this.emitterService.getEmitter('userName').emit(this.userName);
         }
          else {
           this._router.navigate(['/auth/login']); 
           console.log("no");
+          alert("username or password invalid")
         }
       }
 
@@ -55,4 +59,6 @@ password:any
         return this.email.hasError('required') ? 'You must enter a valid password' :
             this.email.hasError('pass') ? 'Invalid password' :'';
       }
+
+      
 }

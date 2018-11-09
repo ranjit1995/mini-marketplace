@@ -1,6 +1,35 @@
-<app-header></app-header>
-<app-search-box></app-search-box>
-<router-outlet></router-outlet>
+<ul style="background-color: azure;">
+    <li><a [routerLink]="['/home']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
+    <li style="float:right ;margin-top:2%"><a [routerLink]="['/registration']" href=""  routerLinkActive="active"   id="register"  >register</a></li> 
+    <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >login</a></li>  </ul>
+    <hr>
+    <!-- search -->
+
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3">
+        <a [routerLink]="['/home']" href=""  routerLinkActive="active">Products</a>   
+      </div>
+      <div class="col-sm-6">
+        
+          <div class="container"> 
+              <div >
+                  <mat-form-field class="example-full-width1" appearance="outline">
+                      <form id="search">
+                      <input type="search" matInput placeholder="Search" id="search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                      <i class="material-icons" (click)="searching()" style="font-size: 25px !important;float:right;color:brown;">search</i>
+                    </form>      
+              </mat-form-field>
+              </div>
+            </div>
+         
+      </div>
+      <div class="col-sm-3">
+          </div>
+    </div>
+  </div>
+  <!-- body -->
+
         <mat-card class="example-card1 " *ngFor="let data of dataSource">
             <img mat-card-image src="../../assets/images/download.jpeg">
             <mat-card-content>
@@ -18,3 +47,4 @@
             </mat-card-footer>
         </mat-card>
    
+        <router-outlet></router-outlet>

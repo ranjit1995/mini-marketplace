@@ -1,7 +1,7 @@
 
 <ul style="background-color: azure;">
-    <li><a [routerLink]="['/home']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
-    <li style="float:right ;margin-top:2%"><a [routerLink]="['/registration']" href=""  routerLinkActive="active">Register</a></li>
-    <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active">Login</a></li>  </ul>
-  <hr>
+    <li><a [routerLink]="['/main']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
+    <li style="float:right ;margin-top:2%"><a [routerLink]="['/home']" href=""  routerLinkActive="active"   id="logout" (click)="logout()" >Logout</a></li>  </ul>
+  
+    <hr>
 

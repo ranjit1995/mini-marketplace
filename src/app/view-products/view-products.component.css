@@ -1,8 +1,8 @@
 .example-card1 {
     
-  max-width:100%;
-  max-height: 100%;
-    float:center;
+  max-width:auto;
+  max-height: auto;
+  float:center;
     margin-top: 3%;
     
   }
@@ -15,16 +15,12 @@
   cursor: auto;
 
 }
-  img
-  {
-    max-height: 100%;
-    max-width: 100%;
-  }
+  
   
 .price
 {
-  background-color: darkseagreen;padding:5.5%;width:112%; margin-left: -5.5%;
-  text-align: left;
+  background-color: darkseagreen;padding:0.5%;
+  text-align: center; font-size: 24px;color:brown !important; 
 }
 .name
 {
@@ -36,12 +32,12 @@
 }
 .ficon
 {
-  float:left; padding:1%;
+  float:left; 
 }
 .row
 {
   text-align: left;
- margin-top: 3%;
+
   background: #fff;
 
 }
@@ -53,6 +49,7 @@
 {
   background: white;
   float: left;
+  margin-top: 3%;
 
 }
 .text-center
@@ -63,6 +60,8 @@
 .group
 {
     text-align: center;
-    font-size: 45px !important;
-    margin-top: 1%;
+    font-size: 25px !important;
+    margin-top: .5%;
+    margin-bottom: 1.5%;
+   
 }

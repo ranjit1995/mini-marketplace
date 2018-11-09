@@ -39,6 +39,7 @@ import { DeleteProductComponent } from './delete-product/delete-product.componen
 import { SearchBoxComponent } from './search-box/search-box.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { MainComponent } from './main/main.component';
 //import { AppRoutingModule } from './app.routing';
   
 const appRoutes: Routes = [
@@ -86,6 +87,10 @@ const appRoutes: Routes = [
         path:"seach-box",
         component:SearchBoxComponent,  
     },
+    {
+        path:"main",
+        component:MainComponent,  
+    },
    
 ];
 
@@ -110,6 +115,8 @@ const appRoutes: Routes = [
     LoginComponent,
     
     SnackbarComponent,
+    
+    MainComponent,
    
   ],
   imports: [

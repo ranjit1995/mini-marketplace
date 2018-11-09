@@ -1,4 +1,10 @@
-<app-header></app-header>
+<ul style="background-color: azure;">
+  <li><a [routerLink]="['/home']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
+  <li style="float:right ;margin-top:2%"><a [routerLink]="['/registration']" href=""  routerLinkActive="active"   id="register"  >register</a></li> 
+  <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >login</a></li>  </ul>
+
+  <hr>
+
 <router-outlet></router-outlet>
 
  <form class="example-form">
@@ -37,15 +43,14 @@
                   <mat-option value="Seller">Seller</mat-option>
                   <mat-option value="Buyer">Buyer</mat-option>
                 </mat-select>
-              
               </mat-form-field>
             </div>
             <div class="container">
               <mat-form-field class="example-full-width"*ngIf="selectedValue == 'Seller'" appearance="outline">
                     <mat-label>Company Name</mat-label>
-                      <input type="text" name="cName" id="cName" [(ngModel)]="cName" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="name" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
-                      <mat-error *ngIf="name.invalid">
-                       <p class='error-danger'> {{getErrorMessage1()}}</p>
+                      <input type="text" name="cName" id="cName" [(ngModel)]="cName" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="cname" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                      <mat-error *ngIf="cname.invalid">
+                       <p class='error-danger'> {{getErrorMessage6()}}</p>
                       </mat-error>
                     </mat-form-field>
 

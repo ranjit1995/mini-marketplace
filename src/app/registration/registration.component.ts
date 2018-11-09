@@ -12,8 +12,8 @@ export class RegistrationComponent implements OnInit {
   mobile: any;
   Email: any;
   selectedValue: any;
-  cname: any;
   cName: any;
+  
   mobileno: any;
   address: any;
   secondAddress: any;
@@ -56,6 +56,7 @@ export class RegistrationComponent implements OnInit {
   state = new FormControl('', [Validators.required,Validators.minLength(3)]);
   pincode = new FormControl('', [Validators.required,Validators.minLength(6)]);
   password = new FormControl('', [Validators.required,Validators.minLength(8)]);
+  cname = new FormControl('', [Validators.required,Validators.minLength(3)]);
   role: any;
   
   getErrorMessage() {
@@ -77,6 +78,10 @@ export class RegistrationComponent implements OnInit {
                 return this.email.hasError('required') ? 'Pincode most be 6 digits' :
                     this.email.hasError('name') ? 'Not a valid pincode' :'';
                   }
+                  getErrorMessage6() {
+                    return this.email.hasError('required') ? 'You must enter at list 3 character' :
+                        this.email.hasError('name') ? 'Not a valid company name' :'';
+                      }         
   getErrorAddress3(){
         return this.address1.hasError('required') ? 'You must enter 3digit' :
         this.address1.hasError('minLength') ? 'Not a valid address' :'';
