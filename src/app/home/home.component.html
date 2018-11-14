@@ -29,22 +29,66 @@
     </div>
   </div>
   <!-- body -->
-
-        <mat-card class="example-card1 " *ngFor="let data of dataSource">
+<div  *ngFor="let data of arrUser">
+        <mat-card class="example-card1 " >
             <img mat-card-image src="../../assets/images/download.jpeg">
             <mat-card-content>
               <div class="price">
-                    <label style="color: brown"><pre><b>Price        {{data.price}}</b></pre></label>
+                    <label style="color: brown"><pre><b>Price      {{data.price}}  </b></pre></label>
               </div>
               <div class="dname">
                     <div class="name"><label><pre>Name         {{data.name}}</pre></label></div>
-                    <div style="color:blueviolet"><label><pre>Discription  4GB RAM 64GB ROM</pre></label></div>
+                    <div style="color:blueviolet"><label><pre>Description  {{data.description}}</pre></label></div>
                 </div>
             </mat-card-content>
             <mat-card-footer>
-                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog()"> favorite </mat-icon></button>
+                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)"> favorite </mat-icon></button>
               <button mat-button class="vicon"><mat-icon class="example-icon" (click)="viewDialog()"> visibility </mat-icon></button>
             </mat-card-footer>
         </mat-card>
+    </div>
+
    
+
+
+  <!-- <table  cellpadding="0" cellspacing="0">
+    
+    <tr><td colspan="5">{{ title }}!</td></tr>
+    <tr *ngIf="arrUser">
+        <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef><th>first name</th>
+        </ng-container>
+  
+        <ng-container matColumnDef="city">
+        <th mat-header-cell *matHeaderCellDef><th>Last Name</th>
+        </ng-container>
+  
+        <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef><th>Email Id</th>
+      </ng-container>
+  
+        <ng-container matColumnDef="mobile">
+        <th mat-header-cell *matHeaderCellDef><th>Mobile</th>
+      </ng-container>
+      
+    </tr>
+  
+    
+    <tr *ngFor="let users of arrUser">
+  
+    <ng-container matColumnDef="first name">
+        <td mat-cell *matCellDef="let element">  <td>{{users.name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="last name">
+      <td mat-cell *matCellDef="let element">  <td>{{users.city}}</td>
+    </ng-container>
+      <ng-container matColumnDef="email">
+      <td mat-cell *matCellDef="let element">  <td>{{users.email}}</td>
+    </ng-container>
+      <ng-container matColumnDef="mobile">
+      <td mat-cell *matCellDef="let element">  <td>{{users.mobile}}</td>
+    </ng-container>
+    </tr>
+  </table>
+   -->
         <router-outlet></router-outlet>

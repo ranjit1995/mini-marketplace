@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-add-product',
@@ -17,8 +18,9 @@ export class AddProductComponent implements OnInit {
   
   discriptions: any;
   Price: any;
+  quantities: any;
   
-  constructor(private _router: Router) { 
+  constructor(private _router: Router,private createUser: AuthService) { 
 // initialize variable value
     this.show = false;
   }
@@ -33,7 +35,7 @@ export class AddProductComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(2)]);
   discription= new FormControl('', [Validators.required,Validators.minLength(5)]);
 price=new FormControl('', [Validators.required,Validators.minLength(1)]);
-quentity=new FormControl('', [Validators.required,Validators.minLength(1)]);
+quantity=new FormControl('', [Validators.required,Validators.minLength(1)]);
 name=new FormControl('', [Validators.required,Validators.minLength(3)]);
   role: any;
   
@@ -46,7 +48,7 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
         this.email.hasError('name') ? 'Not a valid name' :'';
       }
       getErrorMessage2() {
-        return this.email.hasError('required') ? 'Quentity should be not zero' :
+        return this.email.hasError('required') ? 'Quantity should be not zero' :
             this.email.hasError('name') ? 'Not a valid name' :'';
       }
       getErrorMessage3() {
@@ -57,14 +59,34 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
         return this.email.hasError('required') ? 'You must enter at list 5 character' :
         this.email.hasError('name') ? 'Not a valid Discription' :'';
       }
-  addUser() {
+  addproduct() {
     let body = {
-      "product_name":this.pName,
+      "name":this.pName,
       "price":this.Price,
-      "quentity":this.quentity,
+      "quantity":this.quantities,
       "discription":this.discriptions,
+      "cookies":"ga2l5ug9ynhs",
     }
     console.log("Raw data",body);
+    this.createUser.addProduct(body).subscribe(error => {
+      console.log("error: result...:", error);
+     
+      this._router.navigate(['/add-product']); 
+    },
+    data=>{
+      console.log("success: result...:", data.status);
+      if(data.status===200)
+     {
+      this._router.navigate(['/main']);
+     }
+     if(data.status===401)
+     {
+      alert("invalid data");
+     }
+    }
+    );
+    
+
   }
   cancel()
   {

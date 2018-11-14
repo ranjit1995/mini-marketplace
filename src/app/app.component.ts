@@ -1,5 +1,6 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+//import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,18 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./app.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'mini-marketplace';
+  //cookieValue = 'UNKNOWN';
 
-  constructor(public snackBar: MatSnackBar) {}
+  constructor(public snackBar: MatSnackBar, ) {}
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+  ngOnInit(): void {
+    
   }
 }

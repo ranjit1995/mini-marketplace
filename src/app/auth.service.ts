@@ -1,49 +1,70 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   status: number;
+  getLoggedInName: any;
   
+  constructor(private http: HttpClient, private _router: Router,private _cookieService: CookieService) { }
+  token: string;
+  setToken(token: string) {
+    this.token = token;
+  }
 
-  postUserUpdates(body: { "first_name": String; "last_name": String; "email": String; "mobile": Number; "password": String; "address": String; }): any {
-    throw new Error("Method not implemented.");
+  getList(key) {
+    return this._cookieService.getObject(key);
+
+  }
+  saveData(key, Object, CookieOptionsArgs) {
+    this._cookieService.putObject(key, Object, CookieOptionsArgs);
+
+  }
+
+
+  getCookie(key) {
+    return this._cookieService.get(key);
+
   }
   
+  saveCookie(key, Object, CookieOptionsArgs) {
+    this._cookieService.put(key, Object, CookieOptionsArgs);
+  }
 
-  constructor(private http: HttpClient, private _router: Router) { }
+  removeCookie(key) {
+    this._cookieService.remove(key);
+  }
+  remove() {
+    this._cookieService.removeAll();
+  }
+
+  
+  
+  
   login(body) {
     console.log("IN service");
-    return this.http.post('http://192.168.1.38:3000/auth/login',body);
+    return this.http.post('http://192.168.0.37:3000/auth/login',body);
+    
   }
-  createUser(body) {
+  addProduct(body) {
     console.log("IN service");
-    return this.http.post('http://192.168.1.38:3000/users',body);
+    return this.http.post('http://192.168.1.38:3000/products',body);
 
   }
-  editUserUpdate(body1) {
-    console.log("IN service",body1);
-    return this.http.put('http://192.168.1.38:3000/users',body1);
-    
-    
-    
+  registration(body)
+  {
+    console.log("registration");
+    return this.http.post('http://192.168.0.37:3000/users/reg',body);
   }
-  deleteUserData(body) {
-    console.log("IN service",body);
-    return this.http.delete('http://192.168.1.38:3000/users',body);
-   
-
+  getData()
+  {
+    console.log("Get data");
+    return this.http.get('http://192.168.0.37:3000/users/reg');
   }
-  viewUserData(email) {
-    console.log("IN service",email);
-    return this.http.get('http://192.168.1.38:3000/users/'+email);
-   
-
-  }
-
-
-  
 }
+
+
 

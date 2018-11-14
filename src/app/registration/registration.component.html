@@ -40,13 +40,13 @@
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Select Role</mat-label>
                 <mat-select placeholder="Select" [(ngModel)]="selectedValue" id="selectedValue" [ngModelOptions]="{standalone: true}">
-                  <mat-option value="Seller">Seller</mat-option>
-                  <mat-option value="Buyer">Buyer</mat-option>
+                  <mat-option value="1">Seller</mat-option>
+                  <mat-option value="2">Buyer</mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
             <div class="container">
-              <mat-form-field class="example-full-width"*ngIf="selectedValue == 'Seller'" appearance="outline">
+              <mat-form-field class="example-full-width"*ngIf="selectedValue == '1'" appearance="outline">
                     <mat-label>Company Name</mat-label>
                       <input type="text" name="cName" id="cName" [(ngModel)]="cName" matInput placeholder="Company Name" maxlength="50" minlength="3" [formControl]="cname" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                       <mat-error *ngIf="cname.invalid">

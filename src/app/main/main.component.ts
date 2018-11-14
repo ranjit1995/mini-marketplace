@@ -4,6 +4,7 @@ import { MatIconRegistry, MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FavouriteProductsComponent } from '../favourite-products/favourite-products.component';
 import { Router } from '@angular/router';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -38,6 +39,7 @@ export class MainComponent implements OnInit {
   name = new FormControl('', [Validators.required,Validators.minLength(3)]);
   address = new FormControl('', [Validators.minLength(3), Validators.minLength(3)]);
   toggle: boolean;
+  status: boolean;
  
 
   getErrorMessage() {
@@ -48,30 +50,62 @@ export class MainComponent implements OnInit {
         return this.email.hasError('required') ? 'You must enter a 3 digit' :
             this.email.hasError('name') ? 'Not a valid name' :'';
           }
-          constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public dialog: MatDialog,private _router: Router) {
+          constructor(private httpService: HttpClient,iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,public dialog: MatDialog,private _router: Router) {
             iconRegistry.addSvgIcon(
                 'thumbs-up',
                 sanitizer.bypassSecurityTrustResourceUrl('../../assets/image/'));
           }
+        
+         
           
-          openDialog(value)
+          openDialog()
 
           {
-            this.toggle = !this.toggle;
-          console.log("hii price",value);
-          
-            // let data=[this.dataSource];
+            //   let data=[this.dataSource];
             // console.log("array",data);
             let myDiv = document.getElementById('wave1');
             myDiv.style.color = 'red';
-            
+            this.status = !this.status;
           }
           
-          viewDialog() {
-          this._router.navigate(['/view-products']); 
-         
-          }
-  ngOnInit() {
+
+
+  viewDialog(): void {
+   
+    // const dialogRef = this.dialog.open(ViewProductsComponent, {
+    //   width: '350px',
+    //   height:'250px',
+    // });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+     
+    // });
+    this._router.navigate(['/view-products']); 
+    
   }
+
+addUser: any;
+city: String;
+mobile: Number;
+price:number;
+discription:string;
+arrUser: string [];
+
+ngOnInit () {
+this.httpService.get('http://192.168.0.37:3000/products').subscribe(
+data => {
+this.arrUser = data as string [];	 // FILL THE ARRAY WITH DATA.
+//  console.log(this.arrBirds[1]);
+console.log("geting");
+console.log("hii",data)
+},
+
+(err: HttpErrorResponse) => {
+console.log (err.message);
+}
+);
+}
+
 
 }

@@ -60,19 +60,30 @@
             </div>                                                     
         </div>
     </div>
-</div>
+</div>          
 
+
+<span class="edit"><b align="center">View user</b></span>
+
+<form class="example-form" class="data" *ngIf="users" >
+
+  <mat-form-field class="example-full-width">
+      <input  matInput placeholder="First name" name="first_name" [(ngModel)]="users.first_name" maxlength="20" ngModel readonly>
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <input  matInput placeholder="Last name" name="last_name" [(ngModel)]="users.last_name"maxlength="20" ngModel readonly>
+      </mat-form-field><br>
+
+      <mat-form-field class="example-full-width">
+       <input  matInput placeholder="email" name="last_name" [(ngModel)]="users.email"maxlength="20" ngModel readonly>
+     </mat-form-field><br>
      
-                   
-<!-- <div class="row">
-    <div class="container">
-       
-    </div>
-</div>
-      <div class="dname">
-            <div class="name"><label><pre>Name         mi 5pro</pre></label></div>
-            <div style="color:blueviolet"><label><pre>Discription  4GB RAM 64GB ROM</pre></label></div>
-        </div> -->
-     
-               
-           
+          <mat-form-field class="example-full-width">
+              <input  matInput placeholder="Mobile no" name="mobile" [(ngModel)]="users.mobile" maxlength="10" ngModel readonly>
+            </mat-form-field><br>
+            <mat-form-field class="example-full-width">
+                <textarea  matInput placeholder="address" name="address" [(ngModel)]="users.address" rows="3" cols="4" ngModel readonly></textarea>
+              </mat-form-field><br>
+              <input type="submit"(click)="viewDetails()" value="Ok"  class="submit" mat-raised-button color="accent">
+        
+  </form>

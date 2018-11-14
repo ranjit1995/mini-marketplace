@@ -15,7 +15,7 @@ export class FavouriteProductsComponent implements OnInit {
 
     cancel(): void {
     this.dialogRef.close();
-    this._location.back();
+    // this._location.back();
   }
   registration(): void {
     this.dialogRef.close();

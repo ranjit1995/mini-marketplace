@@ -41,7 +41,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MainComponent } from './main/main.component';
 //import { AppRoutingModule } from './app.routing';
-  
+import { CookieService } from 'ngx-cookie-service';
 const appRoutes: Routes = [
     {
     path: '', redirectTo:'/home', pathMatch:'full'
@@ -125,6 +125,7 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     HttpModule,
+    
     ShowHidePasswordModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
@@ -147,7 +148,7 @@ const appRoutes: Routes = [
     //AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [CookieService],
   exports: [],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   
@@ -25,7 +26,7 @@ export class RegistrationComponent implements OnInit {
   show: boolean;
   userName: any;
 
-  constructor(private _router: Router) { 
+  constructor(private _router: Router,private Registration: AuthService) { 
 // initialize variable value
     this.show = false;
   }
@@ -101,20 +102,40 @@ export class RegistrationComponent implements OnInit {
 
   addUser() {
     let body = {
-      "first_name":this.userName,
-      "role":this.selectedValue,
+      "name":this.userName,
+      "role_id":this.selectedValue,
       "email":this.Email,
-      "cname":this.cName,
+      "company_name":this.cName,
    "mobile":this.mobileno,
    "password":this.Password,
-  "address1":this.address,
-  "address2":this.secondAddress,
+  "address_line1":this.address,
+  "address_line2":this.secondAddress,
   "city":this.cities,
   "state":this.State,
   "pincode":this.Pincode,
   
     }
     console.log("Raw data",body);
+    this.Registration.registration(body).subscribe(
+      error => {
+      console.log("error: result...:", error);
+     
+      this._router.navigate(['/registration']); 
+    },
+    data=>{
+      console.log("success: result...:", data.status);
+      if(data.status===201)
+     {
+      this._router.navigate(['/auth/login']);
+     }
+     if(data.status===401)
+     {
+      alert("invalid user or password");
+     }
+    }
+    );
+  
+  
   }
   
 }
