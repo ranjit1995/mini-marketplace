@@ -19,6 +19,7 @@ export class AddProductComponent implements OnInit {
   discriptions: any;
   Price: any;
   quantities: any;
+  descriptions: any;
   
   constructor(private _router: Router,private createUser: AuthService) { 
 // initialize variable value
@@ -64,8 +65,8 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
       "name":this.pName,
       "price":this.Price,
       "quantity":this.quantities,
-      "discription":this.discriptions,
-      "cookies":"ga2l5ug9ynhs",
+      "description":this.descriptions,
+      "token":"ga2l5ug9ynhs",
     }
     console.log("Raw data",body);
     this.createUser.addProduct(body).subscribe(error => {
@@ -74,8 +75,8 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
       this._router.navigate(['/add-product']); 
     },
     data=>{
-      console.log("success: result...:", data.status);
-      if(data.status===200)
+      console.log("success: result...:", data);
+      if(data.status===201)
      {
       this._router.navigate(['/main']);
      }

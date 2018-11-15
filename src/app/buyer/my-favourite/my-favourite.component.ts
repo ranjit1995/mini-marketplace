@@ -1,17 +1,15 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 import { MatIconRegistry, MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FavouriteProductsComponent } from '../favourite-products/favourite-products.component';
 import { Router } from '@angular/router';
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css']
+  selector: 'app-my-favourite',
+  templateUrl: './my-favourite.component.html',
+  styleUrls: ['./my-favourite.component.css']
 })
-export class MainComponent implements OnInit {
+export class MyFavouriteComponent implements OnInit {
 
   toggle: boolean;
   status: boolean;
@@ -44,20 +42,18 @@ price:number;
 discription:string;
 arrUser: string [];
 
-ngOnInit () {
-this.httpService.get('http://192.168.0.37:3000/products').subscribe(
-data => {
-this.arrUser = data as string [];	 // FILL THE ARRAY WITH DATA.
-//  console.log(this.arrBirds[1]);
-console.log("geting");
-console.log("hii",data)
-},
-
-(err: HttpErrorResponse) => {
-console.log (err.message);
-}
-);
-}
-
+    ngOnInit () {
+          this.httpService.get('http://192.168.0.37:3000/products').subscribe(
+              data => {
+                this.arrUser = data as string [];	 // FILL THE ARRAY WITH DATA.
+                //  console.log(this.arrBirds[1]);
+                console.log("geting");
+                console.log("hii",data)
+              },
+              (err: HttpErrorResponse) => {
+                  console.log (err.message);
+              }
+                );
+          }
 
 }

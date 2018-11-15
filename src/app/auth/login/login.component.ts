@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
+import { Key } from 'protractor';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   show: boolean;
 password:any
   emitterService: any;
+  token: any;
   
   
   constructor(private _router: Router,private Login: AuthService) { 
@@ -44,6 +46,8 @@ password:any
       "email": this.userName,
       "password": this.password,
     }
+var token= this.Login.token;
+console.log("cookies",token);
     console.log("Raw data", body);
     this.Login.login(body).subscribe(
       error => {
@@ -55,13 +59,15 @@ password:any
       console.log("success: result...:", data.status);
       if(data.status===200)
      {
-      this._router.navigate(['/main']);
+     console.log(this.Login.saveCookie(token,1,''));
+     this._router.navigate(['/main']);
      }
      if(data.status===401)
      {
       alert("invalid user or password");
      }
     }
+    
     );
     // if(this.userName === 'ranjit@gmail.com' && this.password === 'ranjit123') {
     //        this._router.navigate(['/main']);

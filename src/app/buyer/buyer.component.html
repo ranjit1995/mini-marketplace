@@ -1,0 +1,57 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="row">
+      
+    <div class="col-sm-3">
+
+      <a [routerLink]="['/main']" href=""  routerLinkActive="active">Products</a>   
+    </div>
+    <div class="col-sm-6">
+      
+        <div class="container"> 
+            <div >
+                <mat-form-field class="example-full-width"  appearance="outline" >
+                    <form id="search">
+                    <input type="search" matInput placeholder="Search" id="search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
+                    <i class="material-icons" (click)="searching()" style="font-size: 25px !important;float:right;color:brown;">search</i>
+                  </form>      
+            </mat-form-field>
+            </div>
+          </div>
+       
+    </div>
+    <div class="col-sm-3">
+        <div class="container">
+            <mat-form-field appearance="outline" style="float:right">
+                <mat-label>All</mat-label>
+                <mat-select placeholder="Select" >
+                  <mat-option value="1" ><a [routerLink]="['/buyer']" href=""  routerLinkActive="active">All</a></mat-option>
+                  <mat-option value="2"><a [routerLink]="['/buyer/my-favourite']" href=""  routerLinkActive="active">My favourite</a></mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div> 
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+<div  *ngFor="let data of arrUser;let i = index">
+  <mat-card class="example-card1 " >
+      <img mat-card-image src="../../assets/images/download.jpeg">
+      <mat-card-content>
+        <div class="price">
+              <label style="color: brown"><pre><b>Price      {{data.price}}  </b></pre></label>
+        </div>
+        <div class="dname">
+              <div class="name"><label><pre>Name         {{data.name}}</pre></label></div>
+              <div style="color:blueviolet"><label><pre>Description  {{data.description}}</pre></label></div>
+          </div>
+      </mat-card-content>
+      <mat-card-footer>
+                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)" id="wave1"[ngClass]="status ? 'success' : 'danger'" > favorite </mat-icon></button>
+              <button mat-button class="vicon" ([ngModel])="icon"><mat-icon class="example-icon"  (click)="viewDialog()" > visibility </mat-icon></button>
+            </mat-card-footer>
+        </mat-card>
+      </div>
+      <router-outlet></router-outlet>

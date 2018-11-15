@@ -27,7 +27,7 @@
         <div class="container"> 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Product Description</mat-label>
-                <input type="text" matInput placeholder="Enter product discription" id="discriptions" [formControl]="discription" [(ngModel)]="discriptions"  minlength="5" maxlength="100" required>   
+                <input type="text" matInput placeholder="Enter product discription" id="descriptions" [formControl]="discription" [(ngModel)]="descriptions"  minlength="5" maxlength="100" required>   
                   <mat-error *ngIf="discription.invalid">
                       <p class='error-danger'> {{getErrorMessage4()}}</p>
                   </mat-error>

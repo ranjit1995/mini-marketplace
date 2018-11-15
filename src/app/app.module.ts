@@ -42,6 +42,8 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MainComponent } from './main/main.component';
 //import { AppRoutingModule } from './app.routing';
 import { CookieService } from 'ngx-cookie-service';
+import { BuyerComponent } from './buyer/buyer.component';
+import { MyFavouriteComponent } from './buyer/my-favourite/my-favourite.component';
 const appRoutes: Routes = [
     {
     path: '', redirectTo:'/home', pathMatch:'full'
@@ -60,7 +62,7 @@ const appRoutes: Routes = [
         component:AddProductComponent,  
     },
     {
-        path:'view-products',
+        path:'view-products/:id',
         component:ViewProductsComponent,
         },
     {
@@ -91,6 +93,18 @@ const appRoutes: Routes = [
         path:"main",
         component:MainComponent,  
     },
+    {
+        path:"buyer",
+        component:BuyerComponent,  
+    },
+    {
+        path:"buyer/my-favourite",
+        component:MyFavouriteComponent,  
+    },
+    {
+        path:"delete-product",
+        component:DeleteProductComponent,  
+    },
    
 ];
 
@@ -117,6 +131,10 @@ const appRoutes: Routes = [
     SnackbarComponent,
     
     MainComponent,
+    
+    BuyerComponent,
+    
+    MyFavouriteComponent,
    
   ],
   imports: [

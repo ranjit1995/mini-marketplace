@@ -11,8 +11,9 @@
               </div>
             </mat-card-content>
             <mat-card-footer>
-              <button mat-button class="vicon"><mat-icon class="example-icon" (click)="openDialog()"> favorite </mat-icon></button>
-            </mat-card-footer>
+                    <button mat-button class="eicon"><mat-icon class="example-icon" (click)="editDialog()"> edit </mat-icon></button>
+                    <button mat-button class="dicon"><mat-icon class="example-icon" (click)="deleteDialog()" class="dicon"> delete </mat-icon></button>
+                </mat-card-footer>
         </mat-card>
    
         </div>
@@ -61,29 +62,3 @@
         </div>
     </div>
 </div>          
-
-
-<span class="edit"><b align="center">View user</b></span>
-
-<form class="example-form" class="data" *ngIf="users" >
-
-  <mat-form-field class="example-full-width">
-      <input  matInput placeholder="First name" name="first_name" [(ngModel)]="users.first_name" maxlength="20" ngModel readonly>
-    </mat-form-field><br>
-    <mat-form-field class="example-full-width">
-        <input  matInput placeholder="Last name" name="last_name" [(ngModel)]="users.last_name"maxlength="20" ngModel readonly>
-      </mat-form-field><br>
-
-      <mat-form-field class="example-full-width">
-       <input  matInput placeholder="email" name="last_name" [(ngModel)]="users.email"maxlength="20" ngModel readonly>
-     </mat-form-field><br>
-     
-          <mat-form-field class="example-full-width">
-              <input  matInput placeholder="Mobile no" name="mobile" [(ngModel)]="users.mobile" maxlength="10" ngModel readonly>
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <textarea  matInput placeholder="address" name="address" [(ngModel)]="users.address" rows="3" cols="4" ngModel readonly></textarea>
-              </mat-form-field><br>
-              <input type="submit"(click)="viewDetails()" value="Ok"  class="submit" mat-raised-button color="accent">
-        
-  </form>

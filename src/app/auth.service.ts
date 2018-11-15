@@ -8,11 +8,13 @@ import { CookieService } from 'ngx-cookie-service';
 export class AuthService {
   status: number;
   getLoggedInName: any;
+  getToken: any;
   
   constructor(private http: HttpClient, private _router: Router,private _cookieService: CookieService) { }
   token: string;
   setToken(token: string) {
     this.token = token;
+    console.log("this is a token",token)
   }
 
   getList(key) {
@@ -27,7 +29,6 @@ export class AuthService {
 
   getCookie(key) {
     return this._cookieService.get(key);
-
   }
   
   saveCookie(key, Object, CookieOptionsArgs) {
@@ -50,8 +51,8 @@ export class AuthService {
     
   }
   addProduct(body) {
-    console.log("IN service");
-    return this.http.post('http://192.168.1.38:3000/products',body);
+    console.log("IN service",body);
+    return this.http.post('http://192.168.0.37:3000/products/add',body);
 
   }
   registration(body)
@@ -63,6 +64,16 @@ export class AuthService {
   {
     console.log("Get data");
     return this.http.get('http://192.168.0.37:3000/users/reg');
+  }
+  editUserData(token)
+  {
+    console.log("IN service",token);
+    return this.http.put('http://192.168.0.37:3000/users/',token); 
+  }
+  searchUserData(body)
+  {
+    console.log("IN service",body);
+    return this.http.post('http://192.168.0.37:3000/products/search',body); 
   }
 }
 

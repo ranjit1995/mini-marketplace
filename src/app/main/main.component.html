@@ -15,7 +15,7 @@
       </mat-card-content>
       <mat-card-footer>
                 <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)" id="wave1"[ngClass]="status ? 'success' : 'danger'" > favorite </mat-icon></button>
-              <button mat-button class="vicon" ([ngModel])="icon"><mat-icon class="example-icon"  (click)="viewDialog()" > visibility </mat-icon></button>
+              <button mat-button class="vicon" ([ngModel])="icon"><mat-icon class="example-icon"  routerlink="['/view-products' , data.id]" > visibility </mat-icon></button>
             </mat-card-footer>
         </mat-card>
       </div>
