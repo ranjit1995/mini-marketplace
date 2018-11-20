@@ -3,26 +3,25 @@ import { Router } from '@angular/router';
 import { Validators, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/auth.service';
 import { Key } from 'protractor';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-
   userName: any;
   show: boolean;
 password:any
   emitterService: any;
   token: any;
+  role_id: any;
+  //token: any;
   
   
-  constructor(private _router: Router,private Login: AuthService) { 
-
-
-// initialize variable value
+  constructor(private cookies:CookieService,private _router: Router,private Login: AuthService, ) {
+   
     this.show = false;
   }
 
@@ -46,40 +45,43 @@ password:any
       "email": this.userName,
       "password": this.password,
     }
-var token= this.Login.token;
-console.log("cookies",token);
     console.log("Raw data", body);
     this.Login.login(body).subscribe(
+      data=>{  
+        localStorage.setItem('currentUser', JSON.stringify(data));
+        console.log("success: result...:", data);
+
+        var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = currentUser && currentUser.token;
+        const Token =this.token;
+        this.role_id=currentUser && currentUser.role_id;
+        const Role=this.role_id;
+        console.log("role id" ,this.role_id);
+        console.log("token" ,Token);
+          if(Role === 2)
+          {
+           console.log("in side routing");
+            this._router.navigate(['/buyer']);
+          }
+          if(Role === 1)
+          {
+            this._router.navigate(['/main']);
+          }
+     },
       error => {
       console.log("error: result...:", error);
-     
-      this._router.navigate(['/auth/login']); 
-    },
-    data=>{
-      console.log("success: result...:", data.status);
-      if(data.status===200)
-     {
-     console.log(this.Login.saveCookie(token,1,''));
-     this._router.navigate(['/main']);
-     }
-     if(data.status===401)
+      if(error.status===401)
      {
       alert("invalid user or password");
+      this._router.navigate(['/auth/login']); 
      }
-    }
+      
+    },
+    
     
     );
-    // if(this.userName === 'ranjit@gmail.com' && this.password === 'ranjit123') {
-    //        this._router.navigate(['/main']);
-    //      // this._router.navigate(['/', 'home']);
-    //       console.log("hiiiii");  
-    //       //this.emitterService.getEmitter('userName').emit(this.userName);
-    //     }
-    //      else {
-    //       this._router.navigate(['/auth/login']); 
-    //       console.log("no");
-    //       alert("username or password invalid")
-    //     }
+
+    this.cookies.put('test','testing of cookies');
       }
 
       email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]);

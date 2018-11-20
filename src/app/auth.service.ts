@@ -1,81 +1,249 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http'
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
-  status: number;
   getLoggedInName: any;
   getToken: any;
-  
-  constructor(private http: HttpClient, private _router: Router,private _cookieService: CookieService) { }
-  token: string;
-  setToken(token: string) {
-    this.token = token;
-    console.log("this is a token",token)
-  }
+  public accessToken: string;
+  public name: string;
+  token: any;
+  role_id: any;
+  url:'http://localhost:3000'
+  constructor(private http: HttpClient, private _router: Router,) { 
 
-  getList(key) {
-    return this._cookieService.getObject(key);
-
-  }
-  saveData(key, Object, CookieOptionsArgs) {
-    this._cookieService.putObject(key, Object, CookieOptionsArgs);
-
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token; 
+// initialize variable value
+console.log("token",this.token);
   }
 
 
-  getCookie(key) {
-    return this._cookieService.get(key);
-  }
-  
-  saveCookie(key, Object, CookieOptionsArgs) {
-    this._cookieService.put(key, Object, CookieOptionsArgs);
-  }
 
-  removeCookie(key) {
-    this._cookieService.remove(key);
-  }
-  remove() {
-    this._cookieService.removeAll();
-  }
-
-  
-  
-  
-  login(body) {
-    console.log("IN service");
-    return this.http.post('http://192.168.0.37:3000/auth/login',body);
+  login(body){
+  const  url='http://localhost:3000';
+    console.log("IN service"); 
+    return this.http.post(url+'/auth/login',body);
     
   }
-  addProduct(body) {
-    console.log("IN service",body);
-    return this.http.post('http://192.168.0.37:3000/products/add',body);
+  addProduct(body){
+      const  url='http://localhost:3000';
+      var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.token = currentUser && currentUser.token;
+      const Token =this.token;
+      
+      this.role_id=currentUser && currentUser.role_id;
+      console.log("roll id" ,this.role_id);  
+        let loginHeaders = {
+          headers: new HttpHeaders({
+              'Content-Type': 'application/json',
+              'token': this.token
+          })
+        }
+      const data = new FormData();
+        data.append('token', JSON.stringify(this.token));
+        console.log("IN service body",body);
+        console.log("IN service token",body,Token); 
+        return this.http.post(url+'/products/add',body,loginHeaders);
+    }
+        
+  
+  registration(body){
+            const  url='http://localhost:3000';
+            console.log("registration");
+            return this.http.post(url+'/users/reg',body);
+  }
+
+
+  getData(){
+        const  url='http://localhost:3000';
+        console.log("Get data");
+        return this.http.get(url+'/users/reg');
+  }
+  editUserData(body){
+    const  url='http://localhost:3000';
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+    const Token =this.token;
+    
+    this.role_id=currentUser && currentUser.role_id;
+    console.log("roll id" ,this.role_id);  
+      let loginHeaders = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token': this.token
+        })
+      }
+    const data = new FormData();
+      data.append('token', JSON.stringify(this.token));
+      console.log("IN service",body);
+      console.log("IN service token",body,Token); 
+      return this.http.post(url+'/products/edit',body,loginHeaders);
+  }
+  
+  //search product
+  searchUserData(search){
+    const  url='http://localhost:3000';
+    // let loginHeaders = {
+    //   headers: new HttpHeaders({
+    //       'Content-Type': 'application/json',
+    //       'search' : search
+    //   })
+    // }
+    console.log("IN service",search);
+   // console.log("IN service",loginHeaders);
+    
+    return this.http.get(url+'/products/search/'+search); 
+  }
+  //delete the product
+  delete(id){
+    const  url='http://localhost:3000';
+    console.log("IN service",id);
+    return this.http.delete(url+'/products/'+id); 
+  }
+  // logout
+  Logout(id){
+    const  url='http://localhost:3000';
+    console.log("IN service",id);
+    return this.http.post(url+'/auth/logout',id); 
+  }
+//view detail
+  viewUserData(id){
+    const  url='http://localhost:3000';
+    console.log("IN service",id);
+    return this.http.get(url+'/products/details/'+id); 
+  }
+
+  //add fav
+  addFav(data1)
+  {
+console.log(data1);
+const  url='http://localhost:3000';
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+this.token = currentUser && currentUser.token;
+const Token =this.token;
+
+this.role_id=currentUser && currentUser.role_id;
+console.log("roll id" ,this.role_id);  
+  let loginHeaders = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': this.token
+    })
+  }
+const data = new FormData();
+  data.append('token', JSON.stringify(this.token));
+  console.log("IN service",data1);
+  console.log("IN service token",data1,Token);
+    console.log("IN service",data);
+    return this.http.get(url+'/products/addfav/'+data1,loginHeaders); 
+  }
+  allFav()
+  {
+   
+    const  url='http://localhost:3000';
+    var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+    const Token =this.token;
+    
+    this.role_id=currentUser && currentUser.role_id;
+    console.log("roll id" ,this.role_id);  
+      let loginHeaders = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'token': this.token
+        })
+      }
+    const data = new FormData();
+      data.append('token', JSON.stringify(this.token));
+     
+      console.log("IN service token",Token);
+        console.log("IN service",data);
+        return this.http.get(url+'/products/getfavproducts',loginHeaders); 
 
   }
-  registration(body)
+  addFavBuyer(data1)
   {
-    console.log("registration");
-    return this.http.post('http://192.168.0.37:3000/users/reg',body);
+console.log(data1);
+const  url='http://localhost:3000';
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+this.token = currentUser && currentUser.token;
+const Token =this.token;
+
+this.role_id=currentUser && currentUser.role_id;
+console.log("roll id" ,this.role_id);  
+  let loginHeaders = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': this.token
+    })
   }
-  getData()
+const data = new FormData();
+  data.append('token', JSON.stringify(this.token));
+  console.log("IN service",data1);
+  console.log("IN service token",data1,Token);
+    console.log("IN service",data);
+    return this.http.get(url+'/products/addfav/'+data1,loginHeaders); 
+  }
+
+  removeFav(data1)
   {
-    console.log("Get data");
-    return this.http.get('http://192.168.0.37:3000/users/reg');
+console.log(data1);
+const  url='http://localhost:3000';
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+this.token = currentUser && currentUser.token;
+const Token =this.token;
+
+this.role_id=currentUser && currentUser.role_id;
+console.log("roll id" ,this.role_id);  
+  let loginHeaders = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': this.token
+    })
   }
-  editUserData(token)
+const data = new FormData();
+  data.append('token', JSON.stringify(this.token));
+  console.log("IN service",data1);
+  console.log("IN service token",data1,Token);
+    console.log("IN service",data);
+    return this.http.get(url+'/products/removefav/'+data1,loginHeaders); 
+  }
+
+  //view one product data
+  getOneProduct(id)
   {
-    console.log("IN service",token);
-    return this.http.put('http://192.168.0.37:3000/users/',token); 
+    const  url='http://localhost:3000';
+    console.log("IN service",id);
+    return this.http.get(url+'/products/details/'+id); 
+
   }
-  searchUserData(body)
-  {
-    console.log("IN service",body);
-    return this.http.post('http://192.168.0.37:3000/products/search',body); 
+oneUserName()
+{
+
+const  url='http://localhost:3000';
+var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+this.token = currentUser && currentUser.token;
+const Token =this.token;
+
+this.role_id=currentUser && currentUser.role_id;
+console.log("roll id" ,this.role_id);  
+  let loginHeaders = {
+    headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'token': this.token
+    })
   }
+const data = new FormData();
+  data.append('token', JSON.stringify(this.token));
+
+  console.log("IN service token",Token);
+    console.log("IN service",data);
+    return this.http.get(url+'/users',loginHeaders); 
+  }
+
 }
-
-
 

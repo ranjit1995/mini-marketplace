@@ -19,28 +19,21 @@ export class SearchBoxComponent implements OnInit {
   {
     let body=
     {
-      "search":this.search,
+      'search':this.search
     }
-    console.log("hii",body)
-    this.Search.searchUserData(body).subscribe(
-      error => {
-      console.log("error: result...:", error);
-     
-      //this._router.navigate(['/']); 
+    this.Search.searchUserData(this.search).subscribe(
+      data=>{
+        console.log("success: result...:", data);
+        this.arrUser = data as string [];
+        console.log("0",this.arrUser);
+        
+       
+      }
+    ,
+      err => {
+      console.log("error: result...:", err);
     },
-    data=>{
-      console.log("success: result...:", data.status);
-      this.arrUser = data as string [];
-    //   if(data.status===201)
-    //  {
-    //   this._router.navigate(['/search']);
-    //  }
-     if(data.status===401)
-     {
-      alert("not found");
-     }
-    }
-    );
+     );
   
   
   }

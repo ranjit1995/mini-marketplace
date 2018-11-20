@@ -66,24 +66,26 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
       "price":this.Price,
       "quantity":this.quantities,
       "description":this.descriptions,
-      "token":"ga2l5ug9ynhs",
     }
     console.log("Raw data",body);
-    this.createUser.addProduct(body).subscribe(error => {
+    this.createUser.addProduct(body).subscribe(
+      data=>{
+        console.log("success: result data added",data);
+        alert("successfully added");
+        this._router.navigate(['/main']);
+       },
+      
+      error => {
       console.log("error: result...:", error);
-     
-      this._router.navigate(['/add-product']); 
-    },
-    data=>{
-      console.log("success: result...:", data);
-      if(data.status===201)
-     {
-      this._router.navigate(['/main']);
-     }
-     if(data.status===401)
-     {
-      alert("invalid data");
-     }
+      if(error.status===204)
+      {
+       alert("invalid data");
+       this._router.navigate(['/add-product']); 
+      }if(error.status===201)
+      {
+      
+       this._router.navigate(['/main']); 
+      }
     }
     );
     
@@ -91,7 +93,7 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
   }
   cancel()
   {
-    this._router.navigate(['/home']);
+    this._router.navigate(['/main']);
   }
  addProduct()
  {

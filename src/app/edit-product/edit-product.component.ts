@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { runInThisContext } from 'vm';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-product',
@@ -10,65 +13,41 @@ import { runInThisContext } from 'vm';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
-  _location: any;
+  
   show: boolean;
-  
+  token: any;
   pName: any;
-  
   discriptions: any;
   Price: any;
+  role_id: any;
+  users: any;
+  id: any;
+  name: any;
+  description: any;
+  price: any;
+  quantity: any;
+ 
   
-  constructor(private _router: Router,public dialogRef: MatDialogRef<EditProductComponent>) { 
+  constructor(private http: HttpClient,
+    private httpService: HttpClient,private _router: Router,
+    public dialogRef:MatDialogRef<EditProductComponent>,
+     @Inject(MAT_DIALOG_DATA) public data:any, public Auth:AuthService) { 
+       if (data)
+       {
+         
+         this.id = data;
+        console.log("data of id",this.id);
+       }
 // initialize variable value
- //   this.show = false;
+  this.show = false;
   }
 
   ngOnInit() {
+    this.editProduct();
   }
-//   viewpass()
-//   {
-//     this.show = !this.show;
-//   }
-
-//   email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(2)]);
-//   discription= new FormControl('', [Validators.required,Validators.minLength(5)]);
-// price=new FormControl('', [Validators.required,Validators.minLength(1)]);
-// quentity=new FormControl('', [Validators.required,Validators.minLength(1)]);
-// name=new FormControl('', [Validators.required,Validators.minLength(3)]);
-//   role: any;
-  
-//   getErrorMessage() {
-//     return this.email.hasError('required') ? 'You must enter a valid product name' :
-//         this.email.hasError('email') ? 'Not a valid product name' :'';
-//   }
-//   getErrorMessage1() {
-//     return this.email.hasError('required') ? 'You must enter at list 3 character' :
-//         this.email.hasError('name') ? 'Not a valid name' :'';
-//       }
-//       getErrorMessage2() {
-//         return this.email.hasError('required') ? 'Quentity should be not zero' :
-//             this.email.hasError('name') ? 'Not a valid name' :'';
-//       }
-//       getErrorMessage3() {
-//         return this.email.hasError('required') ? 'price should not be blank' :
-//         this.email.hasError('name') ? 'Not a valid price' :'';
-//       }
-//       getErrorMessage4() {
-//         return this.email.hasError('required') ? 'You must enter at list 5 character' :
-//         this.email.hasError('name') ? 'Not a valid Discription' :'';
-//       }
-//   addUser() {
-//     let body = {
-//       "product_name":this.pName,
-//       "price":this.Price,
-//       "quentity":this.quentity,
-//       "discription":this.discriptions,
-//     }
-//     console.log("Raw data",body);
-//   }
   cancel()
   {
-    this._router.navigate(['/home']);
+ 
     this.dialogRef.close();
   }
  addProduct()
@@ -77,7 +56,60 @@ export class EditProductComponent implements OnInit {
  }
  editProduct()
  {
-  this._router.navigate(['/edit-product']); 
+  console.log("inner id",this.id);
+  this.Auth.getOneProduct(this.id).subscribe(res => {
+    console.log("error: result...:", res);
+  
+    this.users = res;
+    console.log("error: result...:", this.users);
+
+    this._router.navigate(['/main']); 
+  },
+  err=>{
+    console.log("success: result...:", err);
+    }
+  );
+  
  }
 
+ edit()
+ {
+   let body=
+   {
+    "name":this.users.name,
+    "description":this.users.description,
+    "price":this.users.price,
+    "quantity":this.users.quantity
+    
+   }
+   console.log(body)
+  const  url='http://localhost:3000'; 
+
+  var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  this.token = currentUser && currentUser.token;
+  const Token =this.token;
+  console.log("token" ,Token)
+  this.role_id=currentUser && currentUser.role_id;
+  console.log("roll id" ,this.role_id);  
+    let loginHeaders = {
+      headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          'token': this.token
+      })
+    }
+  const data = new FormData();
+    data.append('token', JSON.stringify(this.token));
+    this.httpService.put('http://localhost:3000/products/edit',body,loginHeaders).subscribe(
+      data => {
+         //  console.log(this.arrBirds[1]);
+        console.log("geting");
+        alert("hii edited successfully");
+      },
+
+      (err: HttpErrorResponse) => {
+        console.log (err.message);
+      }
+    );
+  } 
 }
+

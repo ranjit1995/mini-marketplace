@@ -95,3 +95,32 @@ input[type=search]
 {
   float:right;
 }
+.fproduct
+{
+  text-align: center;
+  margin: 15%;
+}
+#search input[type=search].filled
+{
+  
+size: 14px;
+  color: #4a83c0;
+  background-color: #fff;
+  cursor: auto;
+
+}
+input[type=search]
+{
+    width:80%;
+   
+}
+.right
+{
+    text-align: left;
+    margin-top: 1.5%;
+}
+.example-full-width1 {
+  width: 100%;
+ 
+ 
+}

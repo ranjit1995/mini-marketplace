@@ -7,9 +7,8 @@
     <div class="container">
 
       <label class="example-full-width"  style="text-align: center;">
-     <h2 style="float:left; background-color: gray; padding: 3% 15%;font-size:20px;" (click)="addProduct()"><b>Add Product</b></h2>
-     <h2 style="float:right; background-color: lightgray; padding: 3% 15%;font-size:20px;" (click)="editProduct()"><b>Edit Product</b></h2>
-    </label>
+     <h2 style="float:left; background-color: gray; padding: 3% 40%;font-size:20px;" (click)="addProduct()"><b>Add Product</b></h2>
+         </label>
   </div>
 </div>
     <div class="row" style="margin-bottom: -7%;" >
@@ -36,7 +35,7 @@
       <div class="container"> 
           <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter Product Quantity</mat-label>
-              <input type="text" matInput placeholder="Enter product Quantity" id="quantities" [formControl]="quantity" [(ngModel)]="quantities"  minlength="1" maxlength="10" required>   
+              <input type="text" matInput placeholder="Enter product Quantity" id="quantities" [formControl]="quantity" [(ngModel)]="quantities"  minlength="1" maxlength="10"onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
                 <mat-error *ngIf="quantity.invalid">
                     <p class='error-danger'> {{getErrorMessage2()}}</p>
                 </mat-error>
@@ -45,7 +44,7 @@
     <div class="container"> 
         <mat-form-field class="example-full-width" appearance="outline">
             <mat-label>Enter Product price</mat-label>
-            <input type="text" matInput placeholder="Enter product price" id="Price" [formControl]="price" [(ngModel)]="Price"   minlength="1"maxlength="10" required>   
+            <input type="text" matInput placeholder="Enter product price" id="Price" [formControl]="price" [(ngModel)]="Price"   minlength="1"maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
             <mat-error *ngIf="price.invalid">
                 <p class='error-danger'> {{getErrorMessage3()}}</p>
             </mat-error>

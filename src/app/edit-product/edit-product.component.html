@@ -60,11 +60,24 @@
   </form> 
    -->
 
+   <span class="edit"><b>Edit user</b></span>
 
-   <h3>HI</h3>
-<form class="example-form"  >
-<h5 style="font-size: 14px;">Do you want to add it as a favourite product then you have to login/register first?</h5><br>
+   <form class="example-form" class="data" *ngIf="users" >
+   
+     <mat-form-field class="example-full-width">
+         <input type="text" matInput placeholder="Product name" id="name" name="name" [(ngModel)]="users.name" maxlength="20" ngModel="name">
+       </mat-form-field><br>
+       <mat-form-field class="example-full-width">
+           <input type="text" matInput placeholder="Product Description" id="description" name="description" [(ngModel)]="users.description"maxlength="20" ngModel>
+         </mat-form-field><br>
+        
+             <mat-form-field class="example-full-width">
+                 <input type="number" matInput placeholder="Price"id="price" name="price" [(ngModel)]="users.price" maxlength="7" ngModel>
+               </mat-form-field><br>
+               <mat-form-field class="example-full-width">
+                   <input type="text" matInput placeholder="Quantity" id="quantity" name="quantity" [(ngModel)]="users.quantity"  ngModel>
+                 </mat-form-field><br>
 <div class="button-row">
   <a mat-stroked-button style="margin-right:3%;margin-top:5%;" color="accent" class="notDelete" [routerLink]=""   routerLinkActive="active" input type="submit1"(click)="cancel()">Cancel</a>
-  <a mat-stroked-button style="margin-right:3%;margin-top:5%; float:right;" color="accent" class="delete" input type="submit"(click)="delete()">yes</a>
+  <a mat-stroked-button style="margin-right:3%;margin-top:5%; float:right;" color="accent" class="edit" input type="submit"(click)="edit()">yes</a>
 </div></form>

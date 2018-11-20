@@ -3,6 +3,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FavouriteProductsComponent } from './favourite-products/favourite-products.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
 import { ShowHidePasswordModule } from 'ngx-show-hide-password';
+import { FilterPipeModule } from 'ngx-filter-pipe';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -41,9 +42,13 @@ import { LoginComponent } from './auth/login/login.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MainComponent } from './main/main.component';
 //import { AppRoutingModule } from './app.routing';
-import { CookieService } from 'ngx-cookie-service';
+import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { BuyerComponent } from './buyer/buyer.component';
 import { MyFavouriteComponent } from './buyer/my-favourite/my-favourite.component';
+import { ViewProductComponent } from './view-product/view-product.component';
+import { StorageServiceModule} from 'angular-webstorage-service';
+import { SellerComponent } from './seller/seller.component';
+import { MyProductsComponent } from './seller/my-products/my-products.component';
 const appRoutes: Routes = [
     {
     path: '', redirectTo:'/home', pathMatch:'full'
@@ -58,13 +63,19 @@ const appRoutes: Routes = [
     component:RegistrationComponent,  
     },
     {
-        path:"add-product",
-        component:AddProductComponent,  
+    path:"add-product",
+    component:AddProductComponent,  
     },
+    
     {
-        path:'view-products/:id',
-        component:ViewProductsComponent,
-        },
+    component:ViewProductsComponent,
+    path:'view-products',
+    },
+    
+    {
+    path:'view-product',
+    component:ViewProductComponent,
+    },
     {
         path:"edit-product",
         component:EditProductComponent,  
@@ -86,7 +97,7 @@ const appRoutes: Routes = [
         component:HeaderComponent,  
     },
     {
-        path:"seach-box",
+        path:"search-box",
         component:SearchBoxComponent,  
     },
     {
@@ -102,10 +113,17 @@ const appRoutes: Routes = [
         component:MyFavouriteComponent,  
     },
     {
+        path:"seller/my-products",
+        component:MyProductsComponent,  
+    },{
+        path:"seller",
+        component:SellerComponent,  
+    },
+    {
         path:"delete-product",
         component:DeleteProductComponent,  
     },
-   
+
 ];
 
 @NgModule({
@@ -135,15 +153,21 @@ const appRoutes: Routes = [
     BuyerComponent,
     
     MyFavouriteComponent,
+    
+    ViewProductComponent,
+    
+    SellerComponent,
+    
+    MyProductsComponent,
    
   ],
   imports: [
     LayoutModule,
     MatSelectModule,
-    FormsModule,
+    FormsModule,StorageServiceModule,
     RouterModule.forRoot(appRoutes, {useHash: true}),
     HttpModule,
-    
+    FilterPipeModule,
     ShowHidePasswordModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,

@@ -4,32 +4,30 @@
     <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >login</a></li>  </ul>
     <hr>
     <!-- search -->
-
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-3">
-        <a [routerLink]="['/home']" href=""  routerLinkActive="active">Products</a>   
-      </div>
-      <div class="col-sm-6">
-        
-          <div class="container"> 
-              <div >
-                  <mat-form-field class="example-full-width1" appearance="outline">
-                      <form id="search">
-                      <input type="search" matInput placeholder="Search" id="search" [(ngModel)]="search" [ngModelOptions]="{standalone: true}">
-                      <i class="material-icons" (click)="searching()" style="font-size: 25px !important;float:right;color:brown;">search</i>
-                    </form>      
-              </mat-form-field>
-              </div>
+    <router-outlet></router-outlet>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <a [routerLink]="['/main']" href=""  routerLinkActive="active">Products</a>   
+        </div>
+        <div class="col-sm-6">
+          
+            <div class="container"> 
+                <div >
+                    <mat-form-field class="example-full-width1" appearance="outline">
+                        <form id="search">
+                        <input type="text" [(ngModel)]="userFilter.name" matInput placeholder="Search" id="search" [ngModelOptions]="{standalone: true}">
+                        <i class="material-icons" (click)="searching()" style="font-size: 17px !important;float:right;color:brown;margin-top: -2.5%;">search</i>
+                      </form>      
+                    </mat-form-field>
+                </div>
             </div>
-         
+        </div>
+    
       </div>
-      <div class="col-sm-3">
-          </div>
     </div>
-  </div>
   <!-- body -->
-<div  *ngFor="let data of arrUser">
+<div  *ngFor="let data of arrUser | filterBy: userFilter">
         <mat-card class="example-card1 " >
             <img mat-card-image src="../../assets/images/download.jpeg">
             <mat-card-content>
@@ -42,53 +40,20 @@
                 </div>
             </mat-card-content>
             <mat-card-footer>
-                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)"> favorite </mat-icon></button>
-              <button mat-button class="vicon"><mat-icon class="example-icon" (click)="viewDialog()"> visibility </mat-icon></button>
+                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog()"> favorite </mat-icon></button>
+              <button mat-button class="vicon" ([ngModel])="icon">
+                  <mat-icon class="example-icon" (click)="viewDialog(data.id)"> visibility </mat-icon>
+            </button>
             </mat-card-footer>
         </mat-card>
     </div>
-
-   
-
-
-  <!-- <table  cellpadding="0" cellspacing="0">
-    
-    <tr><td colspan="5">{{ title }}!</td></tr>
-    <tr *ngIf="arrUser">
-        <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef><th>first name</th>
-        </ng-container>
-  
-        <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef><th>Last Name</th>
-        </ng-container>
-  
-        <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef><th>Email Id</th>
-      </ng-container>
-  
-        <ng-container matColumnDef="mobile">
-        <th mat-header-cell *matHeaderCellDef><th>Mobile</th>
-      </ng-container>
-      
-    </tr>
-  
-    
-    <tr *ngFor="let users of arrUser">
-  
-    <ng-container matColumnDef="first name">
-        <td mat-cell *matCellDef="let element">  <td>{{users.name}}</td>
-      </ng-container>
-      <ng-container matColumnDef="last name">
-      <td mat-cell *matCellDef="let element">  <td>{{users.city}}</td>
-    </ng-container>
-      <ng-container matColumnDef="email">
-      <td mat-cell *matCellDef="let element">  <td>{{users.email}}</td>
-    </ng-container>
-      <ng-container matColumnDef="mobile">
-      <td mat-cell *matCellDef="let element">  <td>{{users.mobile}}</td>
-    </ng-container>
-    </tr>
-  </table>
-   -->
+    <div *ngIf="!arrUser">
+            <p class="fproduct">no product found</p>  
+            </div>
+            <div *ngIf="arrUser">
+                <ul>
+                  <!-- in case you want to show empty message -->
+                  <li *ngIf="(arrUser | filterBy: userFilter).length === 0">No matching elements</li>
+                </ul>
+            </div>  
         <router-outlet></router-outlet>

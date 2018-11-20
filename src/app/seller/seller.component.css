@@ -1,98 +1,8 @@
-.example-card1 {
-    
-    margin-left:1.1%;
-    margin-top: 2%;
-  
-    float:left;
-  }
-  
-  .filled
+.fproduct
 {
-  max-width: 400px;
-  padding-left: 32px;
-  color: #4a83c0;
-  background-color: #fff;
-  cursor: auto;
-
+  text-align: center;
+  margin: 15%;
 }
-
-.example-card2 {
-   width: 99%;
-    margin-left: .5%;
-    margin-top: 2%;
-    margin-right: .5%;
-    background-color:gray;
-    border: solid 2px black;
-    float:left;
-  }
-  
-.price
-{
-  background-color: darkseagreen;padding: 5.5%;width:111%; margin-left: -5.4%;
-}
-.name
-{
-  color:blueviolet; margin-top:-2%; margin-bottom: -2%;
-}
-.dname
-{
-  padding: 5%;width:100%; margin-left: -5.5%;
-}
-.ficon
-{
-  float:left; padding:1%; margin-top: -7%;
-}
-.vicon
-{
-  float:right; padding:1%; margin-top: -7%;
-}
-
-
-.white-icon {
-  color: rgb(184, 184, 184);
-}
-/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
-.white-icon svg {
-  fill: rgb(216, 27, 27);
-  border: solid 20px black;
-}
-
-
-#search input[type=search].filled
-{
-  
-size: 14px;
-  color: #4a83c0;
-  background-color: #fff;
-  cursor: auto;
-
-}
-input[type=search]
-{
-    width:80%;
-   
-}
-.right
-{
-    text-align: left;
-    margin-top: 1.5%;
-}
- 
-  .example-full-width {
-    width: 100%;
-   
-   
-  }
-  
-  a {
-    display: block;
-    color: rgb(5, 0, 0);
-    text-align: center;
-    padding: 25px 18px;
-    text-decoration: none;
-    font-size: 18px;
-}
-
 .example-card1 {
     
   margin-left:1.1%;
@@ -119,6 +29,101 @@ cursor: auto;
   background-color:gray;
   border: solid 2px black;
   float:left;
+}
+
+.price
+{
+background-color: darkseagreen;padding: 5.5%;width:111%; margin-left: -5.4%;
+}
+.name
+{
+color:blueviolet; margin-top:-2%; margin-bottom: -2%;
+}
+.dname
+{
+padding: 5%;width:100%; margin-left: -5.5%;
+}
+.ficon
+{
+float:left; padding:1%; margin-top: -7%;
+}
+.vicon
+{
+float:right; padding:1%; margin-top: -7%;
+}
+
+
+.white-icon {
+color: rgb(184, 184, 184);
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+fill: rgb(216, 27, 27);
+border: solid 20px black;
+}
+
+
+#search input[type=search].filled
+{
+
+size: 14px;
+color: #4a83c0;
+background-color: #fff;
+cursor: auto;
+
+}
+input[type=search]
+{
+  width:80%;
+ 
+}
+.right
+{
+  text-align: left;
+  margin-top: 1.5%;
+}
+
+.example-full-width {
+  width: 100%;
+ 
+ 
+}
+
+a {
+  display: block;
+  color: rgb(5, 0, 0);
+  text-align: center;
+  padding: 25px 18px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.example-card1 {
+  
+margin-left:1.1%;
+margin-top: 2%;
+
+float:left;
+}
+
+.filled
+{
+max-width: 400px;
+padding-left: 32px;
+color: #4a83c0;
+background-color: #fff;
+cursor: auto;
+
+}
+
+.example-card2 {
+width: 99%;
+margin-left: .5%;
+margin-top: 2%;
+margin-right: .5%;
+background-color:gray;
+border: solid 2px black;
+float:left;
 }
 
 .price
@@ -180,10 +185,10 @@ height: 10%;
 }*/
 li a img 
 {
- max-width: 45%;
-  max-height: 17%;
-  padding: 5px 5px;
-  background-color: transparent;
+max-width: 45%;
+max-height: 17%;
+padding: 5px 5px;
+background-color: transparent;
 } 
 
 
@@ -208,46 +213,38 @@ cursor: auto;
 }
 input[type=search]
 {
-  width:80%;
- 
+width:80%;
+
 }
 .right
 {
-  text-align: left;
-  margin-top: 1.5%;
+text-align: left;
+margin-top: 1.5%;
 }
 
 .example-full-width1 {
-  width: 100%;
- 
- 
+width: 100%;
+
+
 }
 
 a {
-  display: block;
-  color: rgb(5, 0, 0);
-  text-align: center;
-  padding: 25px 18px;
-  text-decoration: none;
-  font-size: 18px;
+display: block;
+color: rgb(5, 0, 0);
+text-align: center;
+padding: 25px 18px;
+text-decoration: none;
+font-size: 18px;
 }
 .md-dialog-container {
-  background-color: #000;
-  width: 2500px;
-  height: 250px
+background-color: #000;
+width: 2500px;
+height: 250px
 }
 .fproduct
 {
-  text-align: center;
-  margin: 15%;
-}
-
-.green {
-  background-color:gray;
-}
-
-.red {
-  background-color: red;
+text-align: center;
+margin: 15%;
 }
 
 #search input[type=search].filled
@@ -269,7 +266,8 @@ input[type=search]
     text-align: left;
     margin-top: 1.5%;
 }
-.example-full-width1
-{
-  width:100%;
+.example-full-width1 {
+  width: 100%;
+ 
+ 
 }

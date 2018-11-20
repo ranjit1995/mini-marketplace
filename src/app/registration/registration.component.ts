@@ -38,15 +38,15 @@ export class RegistrationComponent implements OnInit {
     this.show = !this.show;
   }
 
-  states: string[] = [
-      'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
-      'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-      'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-      'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
-      'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
-      'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-      'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-    ];
+  // states: string[] = [
+  //     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware',
+  //     'Florida', 'Georgia', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
+  //     'Louisiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
+  //     'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico',
+  //     'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania',
+  //     'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
+  //     'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+  //   ];
   
 
   email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]);
@@ -65,11 +65,11 @@ export class RegistrationComponent implements OnInit {
         this.email.hasError('email') ? 'Not a valid email' :'';
   }
   getErrorMessage1() {
-    return this.email.hasError('required') ? 'You must enter at list 3 character' :
+    return this.email.hasError('required') ? 'You must enter at least 3 character' :
         this.email.hasError('name') ? 'Not a valid name' :'';
       }
       getErrorMessage2() {
-        return this.email.hasError('required') ? 'Password most be at list 8 character' :
+        return this.email.hasError('required') ? 'Password most be at least 8 character' :
             this.email.hasError('name') ? 'Not a valid password' :'';
           }
           getErrorMessage4() {
@@ -80,23 +80,23 @@ export class RegistrationComponent implements OnInit {
                     this.email.hasError('name') ? 'Not a valid pincode' :'';
                   }
                   getErrorMessage6() {
-                    return this.email.hasError('required') ? 'You must enter at list 3 character' :
+                    return this.email.hasError('required') ? 'You must enter at least 3 character' :
                         this.email.hasError('name') ? 'Not a valid company name' :'';
                       }         
   getErrorAddress3(){
-        return this.address1.hasError('required') ? 'You must enter 3digit' :
+        return this.address1.hasError('required') ? 'You must enter 3 digit' :
         this.address1.hasError('minLength') ? 'Not a valid address' :'';
-        return this.address1.hasError('required1') ? 'You must enter 3digit' :
+        return this.address1.hasError('required1') ? 'You must enter 3 digit' :
         this.address1.hasError('minLength') ? 'Not a valid address' :'';
-        return this.number.hasError('required1') ? 'You must enter 3digit' :
+        return this.number.hasError('required1') ? 'You must enter 3 digit' :
         this.number.hasError('minLength') ? 'Not a valid address' :'';
-        return this.city.hasError('required1') ? 'You must enter 3digit' :
+        return this.city.hasError('required1') ? 'You must enter 3 digit' :
         this.city.hasError('minLength') ? 'Not a valid address' :'';
-        return this.state.hasError('required1') ? 'You must enter 3digit' :
+        return this.state.hasError('required1') ? 'You must enter 3 digit' :
         this.state.hasError('minLength') ? 'Not a valid address' :'';
-        return this.pincode.hasError('required') ? 'You must enter 3digit' :
+        return this.pincode.hasError('required') ? 'You must enter 3 digit' :
         this.pincode.hasError('minLength') ? 'Not a valid address' :'';
-        return this.password.hasError('required') ? 'You must enter 3digit' :
+        return this.password.hasError('required') ? 'You must enter 3 digit' :
         this.password.hasError('minLength') ? 'Not a valid address' :'';
   }
 
@@ -119,8 +119,8 @@ export class RegistrationComponent implements OnInit {
     this.Registration.registration(body).subscribe(
       error => {
       console.log("error: result...:", error);
-     
-      this._router.navigate(['/registration']); 
+     alert("registration successfull");
+      this._router.navigate(['/auth/login']); 
     },
     data=>{
       console.log("success: result...:", data.status);

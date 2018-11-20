@@ -36,7 +36,7 @@ import { Injectable } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export  class HomeComponent implements OnInit {
-
+  userFilter: any = { name: '' };
  // displayedColumns: string[] = ['city', 'name', 'price'];
   // dataSource = ELEMENT_DATA;
 
@@ -72,19 +72,18 @@ export  class HomeComponent implements OnInit {
             });
             
           }
-          viewDialog(): void {
-           
-            // const dialogRef = this.dialog.open(ViewProductsComponent, {
-            //   width: '350px',
-            //   height:'250px',
-            // });
+          viewDialog(id): void {
+            console.log(id);
+            const dialogRef = this.dialog.open(ViewProductsComponent, {
+              height: '450px',
+               width: '1100px',
+              data: id
+            });
         
-            // dialogRef.afterClosed().subscribe(result => {
-            //   console.log('The dialog was closed');
+            dialogRef.afterClosed().subscribe(result => {
+              console.log('The dialog was closed');
              
-            // });
-            this._router.navigate(['/view-products']); 
-            
+            });
           }
  
   addUser: any;
@@ -95,7 +94,7 @@ export  class HomeComponent implements OnInit {
   arrUser: string [];
 
   ngOnInit () {
-    this.httpService.get('http://192.168.0.37:3000/products').subscribe(
+    this.httpService.get('http://localhost:3000/products').subscribe(
       data => {
         this.arrUser = data as string [];	 // FILL THE ARRAY WITH DATA.
         //  console.log(this.arrBirds[1]);
@@ -108,5 +107,8 @@ export  class HomeComponent implements OnInit {
       }
     );
   }
-
+  searching()
+  {
+    //this._router.navigate(['/search-box']);
+  }
 }

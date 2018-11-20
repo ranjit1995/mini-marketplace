@@ -1,0 +1,70 @@
+.example-card1 {
+    
+    max-width:auto;
+    max-height: auto;
+    float:center;
+      margin-top: 3%;
+      
+    }
+    
+    .filled
+  {
+    max-width: 500px;
+    color: #4a83c0;
+    background-color: #fff;
+    cursor: auto;
+  
+  }
+    
+    
+  .price
+  {
+    background-color: darkseagreen;padding:0.5%;
+    text-align: center; font-size: 24px;color:brown !important; 
+  }
+  .name
+  {
+    color:blueviolet; margin-top:-2%; margin-bottom: -2%;
+  }
+  .dname
+  {
+    padding: 5%;width:100%; margin-left: -5.5%;
+  }
+  .ficon
+  {
+    float:left; 
+  }
+  .row
+  {
+    text-align: left;
+  
+    background: #fff;
+  
+  }
+  .fulllCard
+  {
+    background-color:black;
+  }
+  .well
+  {
+    background: white;
+    float: left;
+    margin-top: 3%;   
+  
+  }
+  .text-center
+  {
+    margin-left: 2%;
+    margin-right: 2%;
+  }
+  .group
+  {
+      text-align: center;
+      font-size: 25px !important;
+      margin-top: .5%;
+      margin-bottom: 1.5%;
+     
+  }
+  .dicon {
+  float: right;
+  }

@@ -9,9 +9,8 @@
               </div>
             </mat-card-content>
             <mat-card-footer>
-                    <button mat-button class="eicon"><mat-icon class="example-icon" (click)="editDialog(user.id)"> edit </mat-icon></button>
-                    <button mat-button class="dicon"><mat-icon class="example-icon" (click)="delete( user.id )" class="dicon"> delete </mat-icon></button>
-                </mat-card-footer>
+                    <button mat-button class="eicon"><mat-icon class="example-icon" (click)="openDialog(user.id)"> favorite </mat-icon></button>
+                  </mat-card-footer>
         </mat-card>
    
         </div>
@@ -46,7 +45,7 @@
                         <p>Seller name</p>
                     </div>
                     <div class="col-sm-9">
-                        <p>{{user.seller_name}}</p>
+                        <!-- <p>{{user.seller}}</p> -->
                     </div>
             </div> 
             <div class="row">

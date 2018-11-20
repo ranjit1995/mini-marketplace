@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favourite-products',
@@ -10,7 +11,7 @@ export class FavouriteProductsComponent implements OnInit {
   _location: any;
 
   constructor(
-    public dialogRef: MatDialogRef<FavouriteProductsComponent>,
+    private _router: Router,public dialogRef: MatDialogRef<FavouriteProductsComponent>
     ) {}
 
     cancel(): void {

@@ -1,7 +1,13 @@
 
 <ul style="background-color: azure;">
-    <li><a [routerLink]="['/main']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
-    <li style="float:right ;margin-top:2%"><a [routerLink]="['/home']" href=""  routerLinkActive="active"   id="logout" (click)="logout()" >Logout</a></li>  </ul>
+    <li><a [routerLink]="" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
+    <li style="float:right ;margin-top:2%" *ngIf="user">  
+            <button mat-button [matMenuTriggerFor]="menu">{{user.name}}</button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="myFav()">my favourate</button>
+              <button mat-menu-item (click)="logout()">Logout</button>
+            </mat-menu>
+        </li>  </ul>
   
     <hr>
 

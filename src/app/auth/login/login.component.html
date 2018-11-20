@@ -8,16 +8,17 @@
 <div class="container-fluid">
   <div class="col-sm-12">
   <form class="example-form">
-  <mat-card class="example-card width" style="text-align: center;">
+  <mat-card class="example-card width" >
+    <div style="text-align: center;">
      <div > <mat-icon class="group">account_circle</mat-icon></div>
       <label>
      <h2 style="text-align: center; font-size: 24px"><b>Login</b></h2>
     </label>
-    
+  </div>
     
       <mat-form-field class="example-full-width"appearance="outline" >
-          <mat-label>User Id</mat-label>
-        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="userName" id="userName" [(ngModel)]="userName" [formControl]="email"  matInput placeholder="User Name" maxlength="50"  required>
+          <mat-label>Email Id</mat-label>
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="userName" id="userName" [(ngModel)]="userName" [formControl]="email"  matInput placeholder="Email Id" maxlength="50"  required>
         <mat-error *ngIf="email.invalid">
             <p class='error-danger'> {{getErrorMessage1()}}</p>
            </mat-error>
@@ -25,7 +26,7 @@
     
       <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Password</mat-label>         
-        <input [type]="show ? 'text' : 'password'" name="password" id="password"[(ngModel)]="password" [formControl]="pass" matInput placeholder="password"  maxlength="32" name="password" [(ngModel)]="password" required>
+        <input [type]="show ? 'text' : 'password'" name="password" id="password"[(ngModel)]="password" [formControl]="pass" matInput placeholder="Password"  maxlength="32" name="password" [(ngModel)]="password" required>
         <button mat-button type="submit" (click)="viewpass()" style="float:right;margin-top: -8%">    <mat-icon class="example-icon" > visibility </mat-icon>  </button>
         <mat-error *ngIf="pass.invalid">
             <p class='error-danger'> {{getErrorMessage2()}}</p>
@@ -33,7 +34,7 @@
       </mat-form-field>
    
     <mat-card-actions>
-      <button mat-button type="submit" [disabled]="!(email.valid && pass.valid)" class="login" (click)="loginUser()">login</button>
+      <button mat-button type="submit" [disabled]="!(email.valid && pass.valid)" class="login" (click)="loginUser()">Login</button>
     </mat-card-actions>
     <mat-nav-list>
       <a [routerLink]="['/registration']" routerLinkActive="active">Register</a>
@@ -42,6 +43,5 @@
   </form> 
 </div>
 </div>
-
     
 <router-outlet></router-outlet>
