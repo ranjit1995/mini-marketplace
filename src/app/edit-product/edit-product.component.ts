@@ -56,14 +56,16 @@ export class EditProductComponent implements OnInit {
  }
  editProduct()
  {
+ this.dialogRef.disableClose = true;
   console.log("inner id",this.id);
   this.Auth.getOneProduct(this.id).subscribe(res => {
-    console.log("error: result...:", res);
+    console.log("error: result...:", res[0].status);
   
-    this.users = res;
+    this.users = res[0];
     console.log("error: result...:", this.users);
 
-    this._router.navigate(['/main']); 
+    // this._router.navigate(['/main']); 
+    
   },
   err=>{
     console.log("success: result...:", err);
@@ -72,7 +74,7 @@ export class EditProductComponent implements OnInit {
   
  }
 
- edit()
+ edit(id)
  {
    let body=
    {
@@ -99,17 +101,23 @@ export class EditProductComponent implements OnInit {
     }
   const data = new FormData();
     data.append('token', JSON.stringify(this.token));
-    this.httpService.put('http://localhost:3000/products/edit',body,loginHeaders).subscribe(
+    this.httpService.put('http://localhost:3000/products/edit/'+this.id,body,loginHeaders).subscribe(
       data => {
          //  console.log(this.arrBirds[1]);
         console.log("geting");
-        alert("hii edited successfully");
+        alert("edited successfully");
+       // this.dialogRef.close();
+      //  this.dialogRef.closeAll();
+       this._router.navigate(['/main']);
       },
 
       (err: HttpErrorResponse) => {
         console.log (err.message);
       }
     );
+    this.dialogRef.close();
+    this.dialogRef.close();
   } 
+  
 }
 

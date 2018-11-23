@@ -1,31 +1,4 @@
-.example-card1 {
-    
-    margin-left:1.1%;
-    margin-top: 2%;
-  
-    float:left;
-  }
-  
-  .filled
-{
-  max-width: 400px;
-  padding-left: 32px;
-  color: #4a83c0;
-  background-color: #fff;
-  cursor: auto;
 
-}
-
-.example-card2 {
-   width: 99%;
-    margin-left: .5%;
-    margin-top: 2%;
-    margin-right: .5%;
-    background-color:gray;
-    border: solid 2px black;
-    float:left;
-  }
-  
 .price
 {
   background-color: darkseagreen;padding: 5.5%;width:111%; margin-left: -5.4%;
@@ -95,7 +68,7 @@ input[type=search]
 
 .example-card1 {
     
-  margin-left:1.1%;
+  margin-left:2.5%;
   margin-top: 2%;
 
   float:left;

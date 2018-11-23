@@ -68,3 +68,11 @@
 .dicon {
 float: right;
 }
+.white-icon {
+  color: rgb(184, 184, 184);
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill: rgb(216, 27, 27);
+  border: solid 20px black;
+}

@@ -39,6 +39,7 @@
 </div>
 
 <div *ngFor="let data of arrUser | filterBy: userFilter">
+    
   <mat-card class="example-card1 ">
 
     <img mat-card-image src="../../assets/images/download.jpeg">
@@ -70,16 +71,46 @@
     </mat-card-footer>
   </mat-card>
 
-
 </div>
+<!-- <div *ngFor="let data of arrUser2 | filterBy: userFilter">
+    <mat-card class="example-card1 ">
+
+        <img mat-card-image src="../../assets/images/download.jpeg">
+        <mat-card-content>
+          <div class="price">
+            <label style="color: brown">
+              <pre><b>Price      {{data.price}}  </b></pre></label>
+          </div>
+          <div class="dname">
+            <div class="name"><label>
+                <pre>Name         {{data.name}}</pre></label></div>
+            <div style="color:blueviolet"><label>
+                <pre>Description  {{data.description}}</pre></label></div>
+            <div class="name"><label>
+                <pre>id         {{data.id}}</pre></label></div>
+    
+          </div>
+    
+        </mat-card-content>
+        <mat-card-footer>
+          <button mat-button class="ficon" ([ngModel])="icon">
+            <mat-icon class="example-icon white-icon" (click)="openDialog(data.id)" style="color: red" id="fav{{data.id}}" >
+              favorite </mat-icon>
+          </button>
+          <button mat-button class="vicon" ([ngModel])="icon">
+            <mat-icon class="example-icon"  (click)="viewProducts(data.id)">
+              visibility </mat-icon>
+          </button>
+        </mat-card-footer>
+      </mat-card>
+      
+</div> -->
 <div *ngIf="!arrUser">
-  <p class="fproduct">no product found</p>
+    <p class="fproduct">No product found</p>
 </div>
-
-
-<div *ngIf="arrUser">
-        <ul>
-          <!-- in case you want to show empty message -->
-          <li *ngIf="(arrUser | filterBy: userFilter).length === 0">No matching elements</li>
-        </ul>
-    </div>  
+<div *ngIf="arrUser" style="margin-top:25%; margin-left: 45%;margin-right: 45%; text-align: center;">
+  <ul >
+    <!-- in case you want to show empty message -->
+    <li *ngIf="(arrUser | filterBy: userFilter).length === 0" >No product found</li>
+  </ul>
+</div>  

@@ -4,10 +4,11 @@ import { MatIconRegistry, MatDialog } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FavouriteProductsComponent } from '../favourite-products/favourite-products.component';
 import { Router } from '@angular/router';
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { ViewProductsComponent } from '../view-products/view-products.component';
 import { AuthService } from '../auth.service';
+import { ViewProductComponent } from '../view-product/view-product.component';
 
 @Component({
   selector: 'app-main',
@@ -15,10 +16,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-
-  users: any[] = [{ name: 'John' }, { name: 'Jane' }, { name: 'Mario' }];
   userFilter: any = { name: '' };
-  
   cookieValue: string ;
   addUser: any;
   city: String;
@@ -26,11 +24,16 @@ export class MainComponent implements OnInit {
   price:number;
   discription:string;
   arrUser: string [];
-  arrUser1: string [];
+  arrUser1: string []; 
+  arrUser2: string [];
   name: any;
 url:any;
 toggle = true;
 status = 'Enable'; 
+  token: any;
+  role_id: any;
+  arrUser3: string[];
+  
   
           constructor(private auth:AuthService,private cookies:CookieService,
             private httpService: HttpClient,iconRegistry: MatIconRegistry, 
@@ -86,6 +89,7 @@ status = 'Enable';
 
 
     ngOnInit () {
+      
         const url='http://localhost:3000';
         this.httpService.get(url+'/products').subscribe(
         data => {
@@ -100,8 +104,85 @@ status = 'Enable';
         (err: HttpErrorResponse) => {
             console.log (err.message);
         });
+        
+      }
 
-    }
+// this.getAll();
+// this.getFav();
+//     }
+//     getAll()
+//     {
+//       var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+// this.token = currentUser && currentUser.token;
+// const Token =this.token;
+
+// this.role_id=currentUser && currentUser.role_id;
+// console.log("roll id" ,this.role_id);  
+//   let loginHeaders = {
+//     headers: new HttpHeaders({
+//         'Content-Type': 'application/json',
+//         'token': this.token
+//     })
+//   }
+// const data = new FormData();
+//   data.append('token', JSON.stringify(this.token));
+
+//   console.log("IN service token",Token);
+//     console.log("IN service",data);
+
+//       const url='http://localhost:3000';
+//       this.httpService.get(url+'/products/data',loginHeaders).subscribe(
+//       data => {
+//           this.arrUser2 = data as string [];	 // FILL THE ARRAY WITH DATA.
+//           //  console.log(this.arrBirds[1]);
+//           console.log("geting");
+            
+//           console.log("hii all products",data);
+
+//       },
+
+//       (err: HttpErrorResponse) => {
+//           console.log (err.message);
+//       });
+//     }
+// getFav()
+// {
+//   const url='http://localhost:3000';
+//   var currentUser = JSON.parse(localStorage.getItem('currentUser'));
+// this.token = currentUser && currentUser.token;
+// const Token =this.token;
+
+// this.role_id=currentUser && currentUser.role_id;
+// console.log("roll id" ,this.role_id);  
+//   let loginHeaders = {
+//     headers: new HttpHeaders({
+//         'Content-Type': 'application/json',
+//         'token': this.token
+//     })
+//   }
+// const data = new FormData();
+//   data.append('token', JSON.stringify(this.token));
+
+//   console.log("IN service token",Token);
+//     console.log("IN service",data);
+
+//   this.httpService.get(url+'/products/getfavproducts',loginHeaders).subscribe(
+//   data => {
+//       this.arrUser3 = data as string [];	 // FILL THE ARRAY WITH DATA.
+//       //  console.log(this.arrBirds[1]);
+//       console.log("geting");
+        
+//       console.log("hii",data);
+
+//   },
+
+//   (err: HttpErrorResponse) => {
+//       console.log (err.message);
+//   });
+
+
+// }
+
   getCookies(){
     alert(this.cookies.get('test'));
     this.cookieValue = this.cookies.get('test');
@@ -113,15 +194,17 @@ status = 'Enable';
   }
   viewProducts(id): void {
         console.log(id);
-        const dialogRef = this.dialog.open(ViewProductsComponent, {
-        height: '450px',
+        const dialogRef = this.dialog.open(ViewProductComponent, {
+        height: 'auto',
         width: '1100px',
         data: id
   });
 
   dialogRef.afterClosed().subscribe(result => {
+    
         console.log('The dialog was closed');
         this.name = result;
       });
   } 
+ 
 }

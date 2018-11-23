@@ -78,8 +78,8 @@ url:any;
   viewDialog(id): void {
     
       console.log(id);
-      const dialogRef = this.dialog.open(ViewProductsComponent, {
-        height: '450px',
+      const dialogRef = this.dialog.open(ViewProductComponent, {
+        height: 'auto',
         width: '1100px',
         data: id
       });

@@ -4,7 +4,7 @@
     <li style="float:right ;margin-top:2%" *ngIf="user">  
             <button mat-button [matMenuTriggerFor]="menu">{{user.name}}</button>
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="myFav()">my favourate</button>
+              <button mat-menu-item (click)="myFav()">My favourate</button>
               <button mat-menu-item (click)="logout()">Logout</button>
             </mat-menu>
         </li>  </ul>

@@ -36,17 +36,17 @@
           </div>
       </mat-card-content>
       <mat-card-footer>
-                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)" style="color:red" id="wave1"[ngClass]="status ? 'success' : 'danger'" > favorite </mat-icon></button>
+                <button mat-button class="ficon" ([ngModel])="icon"> <mat-icon class="example-icon white-icon"  (click)="openDialog(data.id)" style="color:red" id="fav{{data.id}}"[ngClass]="status ? 'success' : 'danger'" > favorite </mat-icon></button>
             </mat-card-footer>
         </mat-card>
       </div>
       <div *ngIf="!arrUser">
-          <p class="fproduct">no product found</p>  
+          <p class="fproduct">No product found</p>  
           </div>
 
           <div *ngIf="arrUser">
-            <ul>
+            <ul >
               <!-- in case you want to show empty message -->
-              <li *ngIf="(arrUser | filterBy: userFilter).length === 0">No matching elements</li>
+              <li *ngIf="(arrUser | filterBy: userFilter).length === 0" style="margin-top:25%; margin-left: 45%;margin-right: 45%; text-align: center;">No product found</li>
             </ul>
-        </div>  
+        </div>   

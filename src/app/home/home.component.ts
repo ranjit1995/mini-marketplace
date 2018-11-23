@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http'
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ViewProductComponent } from '../view-product/view-product.component';
+import { GuastViewComponent } from './guast-view/guast-view.component';
 
 @Injectable()
 // export interface PeriodicElement {
@@ -74,8 +76,8 @@ export  class HomeComponent implements OnInit {
           }
           viewDialog(id): void {
             console.log(id);
-            const dialogRef = this.dialog.open(ViewProductsComponent, {
-              height: '450px',
+            const dialogRef = this.dialog.open(GuastViewComponent, {
+              height: 'auto',
                width: '1100px',
               data: id
             });

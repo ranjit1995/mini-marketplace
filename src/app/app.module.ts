@@ -49,6 +49,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { StorageServiceModule} from 'angular-webstorage-service';
 import { SellerComponent } from './seller/seller.component';
 import { MyProductsComponent } from './seller/my-products/my-products.component';
+import { GuastViewComponent } from './home/guast-view/guast-view.component';
 const appRoutes: Routes = [
     {
     path: '', redirectTo:'/home', pathMatch:'full'
@@ -71,7 +72,10 @@ const appRoutes: Routes = [
     component:ViewProductsComponent,
     path:'view-products',
     },
-    
+    {
+    component:GuastViewComponent,
+    path:'guast-view',
+    },
     {
     path:'view-product',
     component:ViewProductComponent,
@@ -159,6 +163,8 @@ const appRoutes: Routes = [
     SellerComponent,
     
     MyProductsComponent,
+    
+    GuastViewComponent,
    
   ],
   imports: [

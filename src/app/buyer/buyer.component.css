@@ -1,8 +1,8 @@
 .example-card1 {
     
-    margin-left:1.1%;
+    margin-left:2.5%;
     margin-top: 2%;
-  
+ 
     float:left;
   }
   
@@ -122,3 +122,30 @@ input[type=search]
  
  
 }
+.white-icon {
+  color: rgb(184, 184, 184);
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill: rgb(216, 27, 27);
+  border: solid 20px black;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+  }
+  
+  li {
+  float: left;
+  }
+  li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 15px 8px;
+  text-decoration: none;
+  font-size: 18px;
+  }

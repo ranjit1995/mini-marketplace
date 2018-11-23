@@ -1,6 +1,6 @@
 .example-card1 {
     
-    margin-left:1.1%;
+    margin-left:2.5%;
     margin-top: 2%;
   
     float:left;
@@ -165,3 +165,26 @@ input[type=search]
  float: center;
  
 }
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+  }
+  
+  li {
+  float: left;
+  }
+  li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 15px 8px;
+  text-decoration: none;
+  font-size: 18px;
+  }
+  
+  

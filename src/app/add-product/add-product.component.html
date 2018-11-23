@@ -15,45 +15,65 @@
         <div class="container"> 
               <mat-form-field class="example-full-width" appearance="outline">
                   <mat-label>Enter Product Name</mat-label>
-                  <input type="text" matInput placeholder="Enter product name" id="pName" [formControl]="name" [(ngModel)]="pName"  minlength="2" maxlength="30" required >   
-                    <mat-error *ngIf="name.invalid">
+                  <input type="text" matInput placeholder="Enter product name" id="pName" [formControl]="name" [(ngModel)]="pName"  minlength="2" maxlength="32" required >   
+                    <!-- <mat-error *ngIf="name.invalid">
                         <p class='error-danger'> {{getErrorMessage1()}}</p>
-                    </mat-error>
-              
+                    </mat-error> -->
+                    <mat-error *ngIf="name.errors?.minlength">
+                            <p class='error-danger'> Product must be at least 2 characters.</p>
+                           </mat-error>
+                           <mat-error *ngIf="name.errors?.required">
+                                <p class='error-danger'> Please enter name</p>
+                               </mat-error>
                 </mat-form-field>
               
         </div>
         <div class="container"> 
             <mat-form-field class="example-full-width" appearance="outline">
                 <mat-label>Enter Product Description</mat-label>
-                <input type="text" matInput placeholder="Enter product discription" id="descriptions" [formControl]="discription" [(ngModel)]="descriptions"  minlength="5" maxlength="100" required>   
-                  <mat-error *ngIf="discription.invalid">
+                <input type="text" matInput placeholder="Enter product discription" id="descriptions" [formControl]="description" [(ngModel)]="descriptions"  minlength="5" maxlength="100" required>   
+                  <!-- <mat-error *ngIf="discription.invalid">
                       <p class='error-danger'> {{getErrorMessage4()}}</p>
-                  </mat-error>
+                  </mat-error> -->
+                  <mat-error *ngIf="description.errors?.minlength">
+                        <p class='error-danger'> Description must be at least 5 characters.</p>
+                       </mat-error>
+                <mat-error *ngIf="description.errors?.required">
+                    <p class='error-danger'> Please enter description</p>
+                    </mat-error>     
             </mat-form-field>
       </div>
       <div class="container"> 
           <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Enter Product Quantity</mat-label>
-              <input type="text" matInput placeholder="Enter product Quantity" id="quantities" [formControl]="quantity" [(ngModel)]="quantities"  minlength="1" maxlength="10"onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
-                <mat-error *ngIf="quantity.invalid">
-                    <p class='error-danger'> {{getErrorMessage2()}}</p>
-                </mat-error>
+              <input type="text" matInput placeholder="Enter product Quantity" id="quantities" [formControl]="quantity" [(ngModel)]="quantities"  minlength="1" maxlength="6"onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
+                    <mat-error *ngIf="quantity.errors?.minlength">
+                        <p class='error-danger'> Quantity at least one.</p>
+                    </mat-error>
+                    <mat-error *ngIf="quantity.errors?.required">
+                        <p class='error-danger'>Please enter quantity</p>
+                    </mat-error>
           </mat-form-field>
     </div>
     <div class="container"> 
         <mat-form-field class="example-full-width" appearance="outline">
-            <mat-label>Enter Product price</mat-label>
-            <input type="text" matInput placeholder="Enter product price" id="Price" [formControl]="price" [(ngModel)]="Price"   minlength="1"maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
-            <mat-error *ngIf="price.invalid">
+            <mat-label>Enter Product Price</mat-label>
+            <input type="text" matInput placeholder="Enter product price" id="Price" [formControl]="price" [(ngModel)]="Price"   minlength="1"maxlength="8" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>   
+            <!-- <mat-error *ngIf="price.invalid">
                 <p class='error-danger'> {{getErrorMessage3()}}</p>
+            </mat-error> -->
+            <mat-error *ngIf="price.errors?.minlength">
+                <p class='error-danger'> Price should not be zero.</p>
+            </mat-error>
+            <mat-error *ngIf="price.errors?.required">
+                <p class='error-danger'> Please enter price</p>
             </mat-error>
         </mat-form-field>
   </div>
 </div>
     <mat-card-actions>
       <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%;" (click)="cancel()">cancel</button>
-        <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%; float:right;" (click)="addproduct()">Save</button>
+        <button mat-button type="submit" style="text-align: center;width: 20%;padding:1%; background-color: aquamarine; margin-top: 5%; float:right;" (click)="addproduct()"[disabled]="!(price.valid && name.valid && description.valid && quantity.valid)" >Save</button>
       </mat-card-actions>
   </mat-card>
   </form> 

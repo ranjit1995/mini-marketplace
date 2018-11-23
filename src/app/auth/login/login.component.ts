@@ -84,14 +84,14 @@ password:any
     this.cookies.put('test','testing of cookies');
       }
 
-      email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]);
+      email = new FormControl('', [Validators.required, Validators.email]);
       pass = new FormControl('', [Validators.required,Validators.minLength(8)]);
       getErrorMessage1() {
         return this.email.hasError('required') ? 'You must enter a valid user ID' :
             this.email.hasError('email') ? 'Not a valid user ID' :'';
       }
       getErrorMessage2() {
-        return this.email.hasError('required') ? 'You must enter a valid password' :
+        return this.email.hasError('required') ? 'You must enter at least 8 password' :
             this.email.hasError('pass') ? 'Invalid password' :'';
       }
 

@@ -95,7 +95,7 @@ input[type=search]
 
 .example-card1 {
     
-  margin-left:1.1%;
+  margin-left:2.5%;
   margin-top: 2%;
 
   float:left;
@@ -266,4 +266,13 @@ input[type=search]
   width: 100%;
  
  
+}
+
+.white-icon {
+  color: rgb(184, 184, 184);
+}
+/* Note: If you're using an SVG icon, you should make the class target the `<svg>` element */
+.white-icon svg {
+  fill: rgb(216, 27, 27);
+  border: solid 20px black;
 }

@@ -40,10 +40,10 @@ viewProducts()
 {
   console.log("inside api",this.id);
   this.Auth.viewUserData(this.id).subscribe(res => {
-    //console.log("success: result...:", res[0].status);
+    console.log("success: result...:", res[0].status);
   
-   // this.user = res[0];
-   this.user=res
+    this.user = res[0];
+  // this.user=res
    console.log("success: result...:", this.user);
    console.log("success: result...:", res);
   

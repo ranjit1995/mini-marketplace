@@ -49,12 +49,12 @@ export class RegistrationComponent implements OnInit {
   //   ];
   
 
-  email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(3)]);
+  email = new FormControl('', [Validators.required, Validators.email]);
   name = new FormControl('', [Validators.required,Validators.minLength(3)]);
-  address1 = new FormControl('', [Validators.required, Validators.minLength(3)]);
-  number = new FormControl('', [Validators.required,Validators.minLength(3)]);
-  city = new FormControl('', [Validators.required,Validators.minLength(3)]);
-  state = new FormControl('', [Validators.required,Validators.minLength(3)]);
+  address1 = new FormControl('', [Validators.required, Validators.minLength(5)]);
+  number = new FormControl('', [Validators.required,Validators.minLength(10)]);
+  city = new FormControl('', [Validators.required,Validators.minLength(5)]);
+  state = new FormControl('', [Validators.required,Validators.minLength(5)]);
   pincode = new FormControl('', [Validators.required,Validators.minLength(6)]);
   password = new FormControl('', [Validators.required,Validators.minLength(8)]);
   cname = new FormControl('', [Validators.required,Validators.minLength(3)]);
@@ -127,6 +127,8 @@ export class RegistrationComponent implements OnInit {
       if(data.status===201)
      {
       this._router.navigate(['/auth/login']);
+      alert("registration successfull");
+    
      }
      if(data.status===401)
      {

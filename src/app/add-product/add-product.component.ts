@@ -34,10 +34,10 @@ export class AddProductComponent implements OnInit {
   }
 
   email = new FormControl('', [Validators.required, Validators.email, Validators.minLength(2)]);
-  discription= new FormControl('', [Validators.required,Validators.minLength(5)]);
+  description= new FormControl('', [Validators.required,Validators.minLength(5)]);
 price=new FormControl('', [Validators.required,Validators.minLength(1)]);
 quantity=new FormControl('', [Validators.required,Validators.minLength(1)]);
-name=new FormControl('', [Validators.required,Validators.minLength(3)]);
+name=new FormControl('', [Validators.required,Validators.minLength(2)]);
   role: any;
   
   getErrorMessage() {
@@ -72,11 +72,15 @@ name=new FormControl('', [Validators.required,Validators.minLength(3)]);
       data=>{
         console.log("success: result data added",data);
         alert("successfully added");
-        this._router.navigate(['/main']);
+        this._router.navigate(['/main']);    
        },
       
       error => {
       console.log("error: result...:", error);
+      if(error.status=== 400)
+        {
+          alert("bad request");
+        }
       if(error.status===204)
       {
        alert("invalid data");

@@ -1,14 +1,14 @@
 <ul style="background-color: azure;">
     <li><a [routerLink]="['/home']" href=""  routerLinkActive="active"><img src="../../assets/images/logo.png"></a></li>
-    <li style="float:right ;margin-top:2%"><a [routerLink]="['/registration']" href=""  routerLinkActive="active"   id="register"  >register</a></li> 
-    <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >login</a></li>  </ul>
+    <li style="float:right ;margin-top:2%"><a [routerLink]="['/registration']" href=""  routerLinkActive="active"   id="register"  >Register</a></li> 
+    <li style="float:right ;margin-top:2%"><a [routerLink]="['/auth/login']" href=""  routerLinkActive="active"   id="login"  >Login</a></li>  </ul>
     <hr>
     <!-- search -->
     <router-outlet></router-outlet>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3">
-          <a [routerLink]="['/main']" href=""  routerLinkActive="active">Products</a>   
+          <a [routerLink]="['/home']" href=""  routerLinkActive="active">Products</a>   
         </div>
         <div class="col-sm-6">
           
@@ -48,12 +48,12 @@
         </mat-card>
     </div>
     <div *ngIf="!arrUser">
-            <p class="fproduct">no product found</p>  
+            <p class="fproduct">No product found</p>  
             </div>
-            <div *ngIf="arrUser">
-                <ul>
+            <div *ngIf="arrUser" >
+                <ul >
                   <!-- in case you want to show empty message -->
-                  <li *ngIf="(arrUser | filterBy: userFilter).length === 0">No matching elements</li>
+                  <li *ngIf="(arrUser | filterBy: userFilter).length === 0" style="margin-top:25%; margin-left: 45%;margin-right: 45%; text-align: center;">No product found</li>
                 </ul>
             </div>  
         <router-outlet></router-outlet>

@@ -103,12 +103,12 @@ ngOnInit () {
     })
 }
 console.log("header",loginHeaders);
-this.httpService.get(url+'/products/sellerProducts',loginHeaders).subscribe(
+this.httpService.get(url+'/products/myProducts',loginHeaders).subscribe(
 data => {
 this.arrUser = data as string [];	 // FILL THE ARRAY WITH DATA.
 //  console.log(this.arrBirds[1]);
 console.log("geting");
-   
+this._router.onSameUrlNavigation = 'reload';
 console.log("hii",data);
 
 },
@@ -143,4 +143,5 @@ getCookies()
       });
     }
     userFilter: any = { name: '' };
+    
   }

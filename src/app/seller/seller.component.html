@@ -3,7 +3,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-2">
-      <a [routerLink]="['/seller']" href=""  routerLinkActive="active">Products</a>   
+      <a [routerLink]="['/main']" href=""  routerLinkActive="active">Products</a>   
     </div>
     <div class="col-sm-6">
       
@@ -63,11 +63,11 @@
       </div>
 
 <div *ngIf="!arrUser">
-    <p class="fproduct">no product found</p>  
+    <p class="fproduct">No product found</p>  
     </div>
-    <div *ngIf="arrUser">
-      <ul>
-        <!-- in case you want to show empty message -->
-        <li *ngIf="(arrUser | filterBy: userFilter).length === 0">No matching elements</li>
-      </ul>
-  </div>  
+    <div *ngIf="arrUser" style="margin-top:25%; margin-left: 45%;margin-right: 45%; text-align: center;">
+        <ul >
+          <!-- in case you want to show empty message -->
+          <li *ngIf="(arrUser | filterBy: userFilter).length === 0" >No product found</li>
+        </ul>
+    </div>  

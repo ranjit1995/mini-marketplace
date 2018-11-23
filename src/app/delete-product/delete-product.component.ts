@@ -52,6 +52,7 @@ this.deleteProducts();
  }
 
   delete(id): void {
+    this.dialogRef.disableClose = true;
     console.log("deletes",id)
     this.Auth.delete(this.users.id).subscribe(
       data=>{

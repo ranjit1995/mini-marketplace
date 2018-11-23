@@ -87,11 +87,13 @@ console.log("user found",data);
 
   if(roleId===1)
   {
+    this._router.onSameUrlNavigation = 'reload';
     this._router.navigate(['/seller']);
   }
   if(roleId===2)
   
   {
+    this._router.onSameUrlNavigation = 'reload';
     this._router.navigate(['/buyer/my-favourite']);}
   }
 }

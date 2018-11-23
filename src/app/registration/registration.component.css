@@ -4,6 +4,7 @@
   .example-form {
 
     width: 100%;
+    height: auto;
   }
   
   .example-full-width {
@@ -16,7 +17,7 @@
     background-color: white;
     z-index: 20%;
     margin-top: 2%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     margin-left: 24%;
     margin-right: 24%;
     text-align: center;
@@ -84,7 +85,7 @@ li a {
 hr
 {
     margin-top: -.1%;
-   height:2px;
+   height:1px;
    background-color: black;
 
 }

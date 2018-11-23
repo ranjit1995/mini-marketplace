@@ -66,10 +66,47 @@ arrUser: string [];
           err => {
           console.log("error: result...:", err);
         },
-         );
-      
-      
+         );  
       }
+
+      openDialog(data)
+
+      {
+        this.toggle = !this.toggle;
+        this.status = this.toggle ? 'Enable' : 'Disable';
+        console.log("data form fav",data);
+        if(!this.toggle){
+            console.log("inside of fav");
+            let myDiv = document.getElementById('fav'+data);
+            myDiv.style.color = 'red';
+            this.getFav.addFav(data).subscribe(
+              data=>{
+                console.log("success: result...:", data);
+                //this._router.navigate(['/main']);
+                },
+              error => {
+              console.log("error: result...:", error);
+            }
+            );
+            console.log("my div",myDiv);
+        }
+        else{
+          let myDiv = document.getElementById('fav'+data);
+          myDiv.style.color = 'gray';
+          this.getFav.removeFav(data).subscribe(
+          data=>{
+              console.log("success: result...:", data);
+            //this._router.navigate(['/main']);
+           },
+          error => {
+              console.log("error: result...:", error);
+          }
+          );
+          console.log("my div",myDiv);
+        }
+       
+      }
+            
     
 back()
 {

@@ -6,6 +6,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { ViewProductsComponent } from '../view-products/view-products.component';
+import { ViewProductComponent } from '../view-product/view-product.component';
 
 @Component({
   selector: 'app-seller',
@@ -40,8 +41,8 @@ allFav()
 }
 viewProducts(id): void {
   console.log(id);
-  const dialogRef = this.dialog.open(ViewProductsComponent, {
-    height: '450px',
+  const dialogRef = this.dialog.open(ViewProductComponent, {
+    height: 'auto',
     width: '1100px',
     data: id
   });
